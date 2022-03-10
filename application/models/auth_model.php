@@ -58,6 +58,7 @@ class auth_model extends CI_Model
             if(password_verify($password, $data_user->Password)){
                 $this->session->set_userdata('Username', $data_user->Username);
                 $this->session->set_userdata('Name', $data_user->Name);
+                $this->session->set_userdata('IsAdmin', $data_user->IsAdmin);
                 $this->session->set_userdata('is_login', TRUE);
                 return TRUE;
             }else {

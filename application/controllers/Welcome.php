@@ -21,9 +21,9 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data = array(
-			'title' => 'Home Page',
-			'content' => 'test',			
+			'title' => 'Home Page User',
+			'content' => 'user_home',			
 		);
-		$this->load->view('layouts/wrappers.php', $data, FALSE);
+		$this->load->view('user-layout/wrappers.php', $data, FALSE);
 	}
 }

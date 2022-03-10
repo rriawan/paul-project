@@ -22,7 +22,12 @@ class Login extends CI_Controller {
 		$Password = $this->input->post('password');
 
 		if($this->auth_model->loginProses($Username, $Password)){
-			redirect('Dashboard');
+			$isadmin = $this->session->userdata('IsAdmin');
+			if ($isadmin == true){
+				redirect('admin/Dashboard');
+			}else {
+				redirect('Welcome');
+			}
 		}else {
 			$this->session->set_flashdata('error' , 'Username / Password Anda Salah!');
 			redirect('Login');
@@ -33,6 +38,7 @@ class Login extends CI_Controller {
 	{
 		$this->session->unset_userdata('Username');
 		$this->session->unset_userdata('Name');
+		$this->session->unset_userdata('IsAdmin');
 		$this->session->unset_userdata('is_login');
 		redirect('Login');
 	}
