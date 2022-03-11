@@ -14,4 +14,6 @@
 	<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/adminlte.min.css">
+	  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 </head>

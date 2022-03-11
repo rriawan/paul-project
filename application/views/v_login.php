@@ -28,6 +28,16 @@
 				<p class="login-box-msg">Sign in to start your session</p>
 
 				<form action="<?= base_url('Login/ProsesLogin'); ?>" method="post">
+					<?php 
+					if($this->session->flashdata('error')){
+						echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+						echo  $this->session->flashdata('error');
+						echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									</div>';
+					}            
+          ?>
 					<div class="input-group mb-3">
 						<input id="username" name="username" type="text" class="form-control" placeholder="Username">
 						<div class="input-group-append">
@@ -49,19 +59,14 @@
 							<button type="submit" class="btn btn-primary btn-block">Sign In</button>
 						</div>
 					</div>
-					
-					<?php 
-					if($this->session->flashdata('error')){
-						echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
-						echo  $this->session->flashdata('error');
-						echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									</div>';
-					}
-            
-          ?>
+
+
 				</form>
+				<div class="row mt-3">
+					<div class="col-12">
+						<a href="<?= base_url('Register')?>" type="button" class="btn btn-block btn-info btn-sm">Register New Account</a>
+					</div>
+				</div>
 			</div>
 			<!-- /.card-body -->
 		</div>

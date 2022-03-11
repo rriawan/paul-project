@@ -32,10 +32,11 @@ class Register extends CI_Controller {
 		$HashPassword = password_hash($Password, PASSWORD_DEFAULT, $options);
 		if($this->CheckUsername() > 0  ){
 			$this->session->set_flashdata('usernameTaken', 'Username Sudah Digunakan!');
-			redirect('Register');
+			// redirect('Register');
 		}else {			
 			$this->auth_model->register($Name, $Username, $Email, $PhoneNumber, $HashPassword);
-			redirect('Dashboard');
+			return $this->session->set_flashdata('successRegister', 'Sukses Mendaftar Akun Baru');	
+			// redirect('Login');
 			
 		}		
 	}
