@@ -1,10 +1,10 @@
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- SimpleLightbox plugin JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-<!-- Core theme JS-->
-<script src="<?= base_url() ?>landing/js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+ <script src="<?=base_url()?>landing_page/assets/vendor/purecounter/purecounter.js"></script>
+ <script src="<?=base_url()?>landing_page/assets/vendor/aos/aos.js"></script>
+ <script src="<?=base_url()?>landing_page/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <script src="<?=base_url()?>landing_page/assets/vendor/glightbox/js/glightbox.min.js"></script>
+ <script src="<?=base_url()?>landing_page/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+ <script src="<?=base_url()?>landing_page/assets/vendor/swiper/swiper-bundle.min.js"></script>
+ <script src="<?=base_url()?>landing_page/assets/vendor/php-email-form/validate.js"></script>
+
+ <!-- Template Main JS File -->
+ <script src="<?=base_url()?>landing_page/assets/js/main.js"></script>
