@@ -87,6 +87,9 @@
 					<div class="row">
 						<button type="button" class="btn btn-primary btn-block btn-save">Register</button>
 					</div>
+					<p class="mt-3">
+						<a href="<?= base_url('/') ?>">Back to Home Page</a>
+					</p>
 				<!-- </form> -->
 			</div>
 			<!-- /.form-box -->
@@ -104,29 +107,6 @@
 	<script src="<?=base_url()?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
 	<!-- Toastr -->
 	<script src="<?=base_url()?>assets/plugins/toastr/toastr.min.js"></script>
-
-	<!-- alert if username taken -->
-	<!-- <?php 
-		if($this->session->flashdata('usernameTaken')){?>
-		<script>
-			$(function () {
-				var Toast = Swal.mixin({
-					toast: true,
-					position: 'center',
-					showConfirmButton: false,
-					timer: 3000
-				});
-				Toast.fire({
-					position: 'center',
-					icon: 'error',
-					title: '<?= $this->session->flashdata('usernameTaken'); ?>',
-					showConfirmButton: false,
-					timer: 2000
-				});
-			});
-		</script>
-	<?php }?> -->
-	<!--end alert username taken -->
 
 	<script type="text/javascript">
 	$(function() {

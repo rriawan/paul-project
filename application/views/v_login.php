@@ -67,6 +67,9 @@
 						<a href="<?= base_url('Register')?>" type="button" class="btn btn-block btn-info btn-sm">Register New Account</a>
 					</div>
 				</div>
+				<p class="mt-3">
+						<a href="<?= base_url('/') ?>">Back to Home Page</a>
+					</p>
 			</div>
 			<!-- /.card-body -->
 		</div>

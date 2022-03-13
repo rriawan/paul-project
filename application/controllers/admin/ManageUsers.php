@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class ManageUsers extends CI_Controller {
 
 	public function __construct() {        
 		parent::__construct();
@@ -11,10 +11,10 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{		
-		$data = array(
-			'title' => 'Dashboard',
-			'content' => 'admin_dashboard',
-			'active_uri' => 'dashboard'
+    $data = array(
+			'title' => 'Manage User',
+			'content' => 'admin_manage-users',
+			'active_uri' => 'manageuser'
 		);
 		$this->load->view('layouts/wrappers.php', $data, FALSE);
 	}
