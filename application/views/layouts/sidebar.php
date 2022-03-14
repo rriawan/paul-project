@@ -36,17 +36,13 @@
 				<li class="nav-item">
 					<a href="<?= base_url('admin/Dashboard')?>" class="nav-link <?php if($active_uri=="dashboard"){echo 'active';}?>">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
-						<p>
-							Dashboard
-						</p>
+						&nbsp;Dashboard
 					</a>
 				</li>
 				<li class="nav-item">
 					<a href="<?= base_url('admin/ManageUsers')?>" class="nav-link <?php if($active_uri == "manageuser"){echo 'active';}?>">
-						<i class="fas fa-users"></i>
-						<p>
-							User Management
-						</p>
+						<i class="nav-icon fas fa-users"></i>
+						&nbsp;User Management
 					</a>
 				</li>				
 			</ul>
