@@ -39,7 +39,7 @@
 					}            
           ?>
 					<div class="input-group mb-3">
-						<input id="username" name="username" type="text" class="form-control" placeholder="Username">
+						<input id="username" name="username" type="text" class="form-control" placeholder="Username" autofocus>
 						<div class="input-group-append">
 							<div class="input-group-text">
 								<span class="fas fa-user"></span>

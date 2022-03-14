@@ -43,7 +43,7 @@
 				</li>
 				<li class="nav-item">
 					<a href="<?= base_url('admin/ManageUsers')?>" class="nav-link <?php if($active_uri == "manageuser"){echo 'active';}?>">
-						<i class="nav-icon fas fa-th"></i>
+						<i class="fas fa-users"></i>
 						<p>
 							User Management
 						</p>

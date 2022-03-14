@@ -36,7 +36,7 @@
 				<!-- <form action="<?= base_url('Register/CreateAccount'); ?>" method="post"> -->
 					
 					<div class="input-group mb-3">
-						<input id="name" name="name" type="text" class="form-control" placeholder="Full name">
+						<input id="name" name="name" type="text" class="form-control" placeholder="Full name" autofocus>
 						<div class="input-group-append">
 							<div class="input-group-text">
 								<span class="fas fa-user"></span>
