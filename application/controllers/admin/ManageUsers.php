@@ -21,24 +21,35 @@ class ManageUsers extends CI_Controller {
 		$this->load->view('layouts/wrappers.php', $data, FALSE);
 	}
 
-	// public function getListUsers()
-	// {
-	// 	$list = $this->manageUsers_model->getListUsers();
-	// 	$data = array();
+	public function showDetail()
+	{
+		$username = $this->input->post('ID');
+		$data['userdetail'] = $this->manageUsers_model->getUserDetail($username);
+		$this->load->view('modal_manage-users', $data);
+	}
 
-	// 	foreach ($list as $field) {
-	// 		$row = array();
+	public function resetPassword()
+	{
+		$username = $this->input->post('username');
+		$password = "password";
+		$options = ['cost' => 12];
 
-	// 		$row[] = $field->Name;
-	// 		$row[] = $field->Username;
-	// 		$row[] = $field->Email;
-	// 		$row[] = $field->PhoneNumber;
-	// 		$row[] = $field->IsActive;
-	// 		$row[] = $field->CreateAt;
-	// 	}
-	// 	$output = array(
-	// 		"data" => $data,
-	// 	);
-	// 	echo json_encode($output);
-	// }
+		$HashPassword = password_hash($password, PASSWORD_DEFAULT, $options);
+		$this->manageUsers_model->resetPassword($username, $HashPassword);
+	}
+
+	public function saveChange()
+	{
+		$username = $this->input->post('username');
+		// $isactive = $this->input->post('isactive-temp');
+		
+		$data = array(
+			'IsActive' => $this->input->post('isactive'),
+		);
+
+		$this->manageUsers_model->saveChange($data, $username);
+		
+		redirect('admin/ManageUsers');
+		
+	}
 }
