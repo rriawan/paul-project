@@ -55,11 +55,18 @@ class KontakPengurus extends CI_Controller {
 		$username = $this->input->post('ItemID');
 		$getDetail = $this->kontakPengurus_model->getDataUser($username);
 		$name = $getDetail->Name;
-		$isadmin = $getDetail->IsAdmin;
+		$updateby = $this->session->userdata('Username');
 		
-		$proses = $this->kontakPengurus_model->addNewPengurus($name, $username, $isadmin);
+		$proses = $this->kontakPengurus_model->addNewPengurus($name, $username, $updateby);
 		if($proses){
 			redirect('admin/KontakPengurus');
 		}
+	}
+
+	function deletePengurus()
+	{
+		$id = $this->input->post('id');
+		return $this->kontakPengurus_model->deletePengurus($id);
+		
 	}
 }

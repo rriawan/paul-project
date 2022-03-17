@@ -48,7 +48,7 @@
 				<li class="nav-item">
 					<a href="<?= base_url('admin/KontakPengurus')?>" class="nav-link <?php if($active_uri == "kontakpengurus"){echo 'active';}?>">
 						<i class="nav-icon fas fa-user-shield"></i>
-						&nbsp;User Management
+						&nbsp;Kontak Pengurus
 					</a>
 				</li>								
 			</ul>

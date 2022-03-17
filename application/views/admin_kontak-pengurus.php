@@ -22,38 +22,32 @@
 								<th>Name</th>
 								<th>Email</th>
 								<th>Phone Number</th>
+								<th>Update By</th>
+								<th>Update Date</th>
 								<th>Manage</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php 
-							foreach($listpengurus as $row){?>
-							<tr>
+								foreach($listpengurus as $row){
+								$date = new DateTime($row->UpdateDate);
+								$dateformat = $date->format('d-m-Y H:i:s');								
+							?>
+							<tr id="<?= $row->Username?>"">
 								<td><?= $row->Name ?> </td>
 								<td><?= $row->Email ?> </td>
 								<td><?= $row->PhoneNumber ?> </td>
-								<td class="project-actions">
-									<a class="btn btn-primary btn-sm" href="#">
-										<i class="fas fa-folder">
-										</i>
-										View
-									</a>
-									<a class="btn btn-info btn-sm" href="#">
-										<i class="fas fa-pencil-alt">
-										</i>
-										Edit
-									</a>
-									<a class="btn btn-danger btn-sm" href="#">
-										<i class="fas fa-trash">
-										</i>
-										Delete
-									</a>
+								<td><?= $row->UpdateBy ?> </td>
+								<td><?= $dateformat ?> </td>
+								<td class=" project-actions">
+								<button class="btn btn-danger btn-sm btn-delete">
+									<i class="fas fa-trash"></i> Delete
+								</button>
 								</td>
 							</tr>
 							<?php
 							}
 							?>
-
 						</tbody>
 					</table>
 				</div>
@@ -102,6 +96,41 @@
 				$("#modalIsi").html(data);
 				document.getElementById("modalTitle").innerHTML = aksi;
 			}
+		});
+	});
+	$(function () {
+		var Toast = Swal.mixin({
+			toast: true,
+			position: 'center',
+			showConfirmButton: false,
+			timer: 3000
+		});
+		$(".btn-delete").click(function (e) {
+			var id = $(this).parents("tr").attr("id");
+
+			e.preventDefault();
+			Swal.fire({
+				icon: 'warning',
+				title: 'Are you sure you want to delete this record?',
+				showDenyButton: true,
+				showCancelButton: false,
+				confirmButtonText: 'Yes'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						type: "POST", 
+						url: '<?= base_url('admin/KontakPengurus/deletePengurus')?>', 
+						data: { id:id }, 
+						beforeSend: function () {
+						},
+						success: function (response) { 
+							window.location.reload();
+						}
+					});
+				} else if (result.isDenied) {
+					Swal.fire('Changes are not saved', '', 'info');
+				}
+			});					
 		});
 	});
 </script>
