@@ -1,11 +1,11 @@
 Admin Page : 
-Login - Logout
+  Login - Logout
 View Konten
 Create Profile Gereja
 Create Jadwal Ibadah Mingguan
 Create Jadwal Ibadah Lingkungan
 Create Jadwal Ibadah Perkumpulan
-Informasi Data Jemaat, Manage User
+  Informasi Data Jemaat, Manage User
 Informasi Pemasukan dan Pengeluaran Tiap Minggu
 Informasi Struktur Kepengurusan Gereja
 Warta Jemaat (PDF)
@@ -14,6 +14,6 @@ Kontak Pengurus Gereja
 Melihat Saran Dan Komentar
 
 User :
-Register New Account
+  Register New Account
 Create User Profile (Detail Profile)
 Saran dan Komentar (Contact Us)
