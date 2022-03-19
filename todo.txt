@@ -11,9 +11,9 @@ Informasi Struktur Kepengurusan Gereja
 Warta Jemaat (PDF)
 Renungan Harian
   Kontak Pengurus Gereja
-Melihat Saran Dan Komentar
+  Melihat Saran Dan Komentar
 
 User :
   Register New Account
 Create User Profile (Detail Profile)
-Saran dan Komentar (Contact Us)
+  Saran dan Komentar (Contact Us)

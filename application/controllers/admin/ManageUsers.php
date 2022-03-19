@@ -7,6 +7,7 @@ class ManageUsers extends CI_Controller {
 		parent::__construct();
 		$this->load->model('auth_model');
 		$this->auth_model->isLogin();
+    $this->auth_model->isAdmin();
 		$this->load->model('manageUsers_model');
 	}
 

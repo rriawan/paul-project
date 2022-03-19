@@ -1,18 +1,21 @@
-<div class="table-responsive mailbox-messages">
-	<table id="datatable" class="table table-striped text-nowrap">
-		<thead>
-			<tr>
-				<th><strong>#</strong></th>
-				<th><strong>Name</strong></th>
-				<th><strong>Username</strong></th>
-			</tr>
-		</thead>
-		<tbody id="select">
+<div class="col-sm-12">
+	<!-- <div class="table-responsive"> -->
+		<table id="datatable" class="table table-bordered table-striped" style="width: 100%;">
+			<thead>
+				<tr>
+					<th><strong>Action</strong></th>
+					<th><strong>Name</strong></th>
+					<th><strong>Username</strong></th>
+				</tr>
+			</thead>
+			<tbody id="select">
 
-		</tbody>
-	</table>
-	<!-- /.table -->
+			</tbody>
+		</table>
+		<!-- /.table -->
+	<!-- </div> -->
 </div>
+
 <script type="text/javascript">
 	$(document).ready(function () {
 		var table;
@@ -39,10 +42,11 @@
 				},
 
 				success: function (data) {
-					alert("Sukses Menambahkan Pengurus");
-					// document.getElementById("modalTitle").innerHTML = aksi;
-          window.location.reload();     
-        }
+					Swal.fire('Sukses Menambahkan Pengurus', '', 'info')
+						.then(function () {
+							window.location = "<?=base_url('admin/KontakPengurus')?>";
+						});
+				}
 			});
 		});
 	});

@@ -26,7 +26,7 @@ class Login extends CI_Controller {
 			if ($isadmin == true){
 				redirect('admin/Dashboard');
 			}else {
-				redirect('Welcome');
+				redirect('Home');
 			}
 		}else {
 			$this->session->set_flashdata('error' , 'Username / Password Anda Salah!');

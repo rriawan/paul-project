@@ -74,19 +74,17 @@ class auth_model extends CI_Model
         }
     }
 
-    function isAccessible($BagianID){
-        if($BagianID == $this->session->userdata('BagianID')){
-            return TRUE;            
-        }else {
-            return FALSE;
-        }
+    function userInfo($username){
+        $sql = "SELECT * FROM user WHERE Username = '$username'";
+        return $this->db->query($sql);
     }
-    function isAdmin($admin){
-        if($admin == $this->session->userdata('Username')){
-            return TRUE;
-        }else{
-            return FALSE;
+    
+    function isAdmin(){
+        $isadmin = $this->session->userdata('IsAdmin');
+        if($isadmin == FALSE){
+            redirect('404');
         }
+        
     }
 
     //END LOGIN //

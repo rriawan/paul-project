@@ -50,6 +50,12 @@
 						<i class="nav-icon fas fa-user-shield"></i>
 						&nbsp;Kontak Pengurus
 					</a>
+				</li>	
+				<li class="nav-item">
+					<a href="<?= base_url('admin/SaranPengguna')?>" class="nav-link <?php if($active_uri == "saranpengguna"){echo 'active';}?>">
+						<i class="nav-icon far fa-comment-dots"></i>
+						&nbsp;Saran Pengguna
+					</a>
 				</li>								
 			</ul>
 		</nav>

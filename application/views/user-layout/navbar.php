@@ -7,13 +7,13 @@
 
 		<nav id="navbar" class="navbar order-last order-lg-0">
 			<ul>
-				<li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+				<li><a class="nav-link scrollto <?php if($active_uri == "home"){echo 'active';}?>" href="<?=base_url('/')?>">Home</a></li>
 				<li><a class="nav-link scrollto" href="#about">About</a></li>
 				<li><a class="nav-link scrollto" href="#services">Services</a></li>
 				<li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
 				<li><a class="nav-link scrollto" href="#team">Team</a></li>
-				<li><a href="blog.html">Blog</a></li>
-				<li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+				<li><a href="<?=base_url('ContactUs')?>" class="<?php if($active_uri == "kontakkami"){echo 'active';}?>">Kontak</a></li>
+				<!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
 				<?php 
 					$is_admin = $this->session->userdata('IsAdmin');
 					$is_login = $this->session->userdata('is_login');

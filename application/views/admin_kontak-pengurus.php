@@ -31,9 +31,8 @@
 							<?php 
 								foreach($listpengurus as $row){
 								$date = new DateTime($row->UpdateDate);
-								$dateformat = $date->format('d-m-Y H:i:s');								
-							?>
-							<tr id="<?= $row->Username?>"">
+								$dateformat = $date->format('d-m-Y H:i:s'); ?>
+							<tr id="<?= $row->Username?>">
 								<td><?= $row->Name ?> </td>
 								<td><?= $row->Email ?> </td>
 								<td><?= $row->PhoneNumber ?> </td>
@@ -103,7 +102,7 @@
 			toast: true,
 			position: 'center',
 			showConfirmButton: false,
-			timer: 3000
+			// timer: 3000
 		});
 		$(".btn-delete").click(function (e) {
 			var id = $(this).parents("tr").attr("id");
@@ -124,7 +123,10 @@
 						beforeSend: function () {
 						},
 						success: function (response) { 
-							window.location.reload();
+							Swal.fire('Data Pengurus telah dihapus!', '', 'info')
+								.then(function() {
+								window.location = "<?=base_url('admin/KontakPengurus')?>";
+							});
 						}
 					});
 				} else if (result.isDenied) {

@@ -22,14 +22,15 @@
   <link href="<?= base_url()?>landing_page/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="<?= base_url()?>landing_page/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  	<!-- Sweet Alert -->
+	<link rel="stylesheet" href="<?=base_url()?>assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+	<!-- Toastr -->
+	<link rel="stylesheet" href="<?=base_url()?>assets/plugins/toastr/toastr.min.css">
+  
   <!-- Template Main CSS File -->
   <link href="<?= base_url()?>landing_page/assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Presento - v3.7.0
-  * Template URL: https://bootstrapmade.com/presento-bootstrap-corporate-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <!-- jquery-->
+	<script src="<?= base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
+  
 
 </head>
