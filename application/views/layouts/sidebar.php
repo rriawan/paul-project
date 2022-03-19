@@ -56,7 +56,13 @@
 						<i class="nav-icon far fa-comment-dots"></i>
 						&nbsp;Saran Pengguna
 					</a>
-				</li>								
+				</li>		
+				<li class="nav-item">
+					<a href="<?= base_url('admin/WartaTerkini')?>" class="nav-link <?php if($active_uri == "wartaterkini"){echo 'active';}?>">
+						<i class="nav-icon far fa-newspaper"></i>
+						&nbsp;Warta Terkini
+					</a>
+				</li>							
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

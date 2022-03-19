@@ -3,9 +3,9 @@
  	<div class="container" data-aos="zoom-out" data-aos-delay="100">
  		<div class="row">
  			<div class="col-xl-6">
- 				<h1>Bettter digital experience with Presento</h1>
- 				<h2>We are team of talented designers making websites with Bootstrap</h2>
- 				<a href="#about" class="btn-get-started scrollto">Get Started</a>
+ 				<h1>HKBP Dame - Resort Duri</h1>
+ 				<!-- <h2>We are team of talented designers making websites with Bootstrap</h2> -->
+ 				<a href="#wartaterkini" class="btn-get-started scrollto">Warta Terkini</a>
  			</div>
  		</div>
  	</div>
@@ -42,18 +42,15 @@
  	</section><!-- End Clients Section -->
 
  	<!-- ======= About Section ======= -->
- 	<section id="about" class="about section-bg">
+ 	<section id="wartaterkini" class="about section-bg">
  		<div class="container" data-aos="fade-up">
 
  			<div class="row no-gutters">
- 				<div class="content col-xl-5 d-flex align-items-stretch">
+ 				<div class="content col-xl-12 d-flex align-items-stretch">
  					<div class="content">
- 						<h3>Voluptatem dignissimos provident quasi</h3>
- 						<p>
- 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
- 							dolore magna aliqua. Duis aute irure dolor in reprehenderit
- 						</p>
- 						<a href="#" class="about-btn"><span>About us</span> <i class="bx bx-chevron-right"></i></a>
+ 						<h3>Warta Terkini</h3>
+ 						<?= nl2br($wartaterkini->PesanWartaTerkini) ?>
+ 						<!-- <a href="#" class="about-btn"><span>About us</span> <i class="bx bx-chevron-right"></i></a> -->
  					</div>
  				</div>
  				<div class="col-xl-7 d-flex align-items-stretch">
@@ -80,7 +77,7 @@
  								<p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
  							</div>
  						</div>
- 					</div><!-- End .content-->
+ 					</div>
  				</div>
  			</div>
 
