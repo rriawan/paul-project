@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 02:59 AM
+-- Generation Time: Mar 21, 2022 at 11:29 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -20,6 +20,50 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_app`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dewan`
+--
+
+CREATE TABLE `dewan` (
+  `id_dewan` int(11) NOT NULL,
+  `nama_dewan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dewan`
+--
+
+INSERT INTO `dewan` (`id_dewan`, `nama_dewan`) VALUES
+(1, 'Koinonia'),
+(2, 'Marturia'),
+(3, 'Diakonia');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jabatan`
+--
+
+CREATE TABLE `jabatan` (
+  `id_jabatan` int(11) NOT NULL,
+  `nama_jabatan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `jabatan`
+--
+
+INSERT INTO `jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
+(1, 'Pendeta Resort'),
+(2, 'Pendeta'),
+(3, 'Ketua'),
+(4, 'Parartaon'),
+(5, 'Sekretaris'),
+(6, 'Bendahara'),
+(7, 'Anggota');
 
 -- --------------------------------------------------------
 
@@ -45,6 +89,26 @@ INSERT INTO `kontak_pengurus` (`id`, `Username`, `Name`, `UpdateBy`, `UpdateDate
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `organisasi`
+--
+
+CREATE TABLE `organisasi` (
+  `id_organisasi` int(11) NOT NULL,
+  `nama_organisasi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `organisasi`
+--
+
+INSERT INTO `organisasi` (`id_organisasi`, `nama_organisasi`) VALUES
+(1, 'Pendeta'),
+(2, 'Fungsionaris'),
+(3, 'Dewan');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `saran_komentar`
 --
 
@@ -66,6 +130,70 @@ INSERT INTO `saran_komentar` (`id`, `Username`, `Subject`, `Message`, `IsRead`, 
 (1, 'user', 'TES SUBJECT 6', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, laudantium? Dolor tempora numquam sint, aperiam itaque deserunt ratione totam saepe ab aliquid dolore perferendis blanditiis error veniam vero cupiditate eveniet voluptate sit, distinctio, illum laudantium magnam et similique. Voluptate sunt ipsam esse doloribus harum, in quos voluptas cum, eaque numquam corporis odio sequi optio asperiores, error aliquam autem fugit eum. Blanditiis vel corporis repellendus ab officia minima hic quisquam delectus! Excepturi culpa veniam veritatis consequatur quo. Error beatae tempora perspiciatis et quisquam, corporis, cupiditate recusandae corrupti deserunt sunt quos libero quis sint qui nemo! Eveniet doloremque, deserunt maiores rem magnam sapiente ex iste nihil quibusdam officiis, quas, repudiandae similique nisi labore. Molestias ullam voluptatem voluptas vero illo? Rem, doloribus debitis. Adipisci aperiam quod ipsa sit, maxime obcaecati autem quam distinctio nulla placeat exercitationem sapiente nostrum enim delectus aut assumenda eveniet dolor qui sed laborum sunt vel saepe rem impedit. Asperiores ratione corrupti quis, natus ad repellendus eaque dignissimos tenetur est eius sequi officiis magni quam! Veniam sunt saepe autem soluta facilis eius corrupti doloremque voluptatibus itaque, necessitatibus nam ex temporibus, quod quam harum accusantium totam nisi at? Sequi amet provident reiciendis incidunt, debitis itaque! Vitae mollitia vel eum quod molestias!', 1, 'admin', '2022-03-19 17:28:28'),
 (2, 'user', 'TES SUBJECT', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, nostrum in pariatur beatae modi repellendus suscipit dolorum explicabo! Est dignissimos temporibus odit quaerat officia suscipit reprehenderit quae blanditiis hic similique.', 1, 'admin', '2022-03-19 17:43:06'),
 (7, 'kakak', 'INI SUBJECT DARI APAU', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, nostrum in pariatur beatae modi repellendus suscipit dolorum explicabo! Est dignissimos temporibus odit quaerat officia suscipit reprehenderit quae blanditiis hic similique.', 0, '', '2022-03-19 17:52:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seksi`
+--
+
+CREATE TABLE `seksi` (
+  `id_seksi` int(11) NOT NULL,
+  `id_dewan` int(11) NOT NULL,
+  `nama_seksi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `seksi`
+--
+
+INSERT INTO `seksi` (`id_seksi`, `id_dewan`, `nama_seksi`) VALUES
+(1, 1, 'Seksi Sekolah Minggu'),
+(2, 1, 'Pendamping Pra-Remaja'),
+(3, 1, 'Seksi Remaja'),
+(4, 1, 'Pendamping Remaja'),
+(5, 1, 'Seksi Naposobulung'),
+(6, 1, 'Seksi Perempuan'),
+(7, 1, 'Seksi Ama'),
+(8, 1, 'Seksi Lansia'),
+(9, 2, 'Seksi Sending'),
+(10, 2, 'Seksi Musik'),
+(11, 3, 'Seksi Diakoni Sosial'),
+(12, 3, 'Seksi Pendidikan'),
+(13, 3, 'Seksi Kemasyarakatan'),
+(14, 3, 'Seksi Kesehatan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `struktur_organisasi`
+--
+
+CREATE TABLE `struktur_organisasi` (
+  `id` int(11) NOT NULL,
+  `Nama` varchar(255) NOT NULL,
+  `is_seksi` tinyint(1) DEFAULT NULL,
+  `id_organisasi` int(11) NOT NULL,
+  `id_dewan` int(11) DEFAULT NULL,
+  `id_seksi` int(11) DEFAULT NULL,
+  `id_jabatan` int(11) NOT NULL,
+  `no_telp` varchar(20) DEFAULT NULL,
+  `img_url` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `struktur_organisasi`
+--
+
+INSERT INTO `struktur_organisasi` (`id`, `Nama`, `is_seksi`, `id_organisasi`, `id_dewan`, `id_seksi`, `id_jabatan`, `no_telp`, `img_url`) VALUES
+(1, 'Tirta Wapasha Wibowo', 0, 1, NULL, NULL, 1, '08123123123', NULL),
+(2, 'Andew Aditya Gultom', 0, 1, NULL, NULL, 2, '08123123123', NULL),
+(3, 'Kevin Sinurat', 0, 2, NULL, NULL, 4, '0181231231231', NULL),
+(4, 'Bistok Hutauruk', 0, 2, NULL, NULL, 5, '081432123123', NULL),
+(5, 'Manggala Pasaribu', 0, 3, NULL, NULL, 3, '08123123123', NULL),
+(6, 'Iwan Monang Sihite', 0, 3, NULL, NULL, 5, NULL, NULL),
+(7, 'Ehecatl Shenandoah Aucaman', 1, 3, 1, 1, 3, '08123123123', NULL),
+(8, 'Cahya Bagus Goyathlay', 1, 3, 1, 2, 7, '08123123123', NULL);
 
 -- --------------------------------------------------------
 
@@ -123,15 +251,45 @@ INSERT INTO `warta_terkini` (`id`, `PesanWartaTerkini`, `UpdateBy`, `UpdateDate`
 --
 
 --
+-- Indexes for table `dewan`
+--
+ALTER TABLE `dewan`
+  ADD PRIMARY KEY (`id_dewan`);
+
+--
+-- Indexes for table `jabatan`
+--
+ALTER TABLE `jabatan`
+  ADD PRIMARY KEY (`id_jabatan`);
+
+--
 -- Indexes for table `kontak_pengurus`
 --
 ALTER TABLE `kontak_pengurus`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `organisasi`
+--
+ALTER TABLE `organisasi`
+  ADD PRIMARY KEY (`id_organisasi`);
+
+--
 -- Indexes for table `saran_komentar`
 --
 ALTER TABLE `saran_komentar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `seksi`
+--
+ALTER TABLE `seksi`
+  ADD PRIMARY KEY (`id_seksi`);
+
+--
+-- Indexes for table `struktur_organisasi`
+--
+ALTER TABLE `struktur_organisasi`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -151,16 +309,46 @@ ALTER TABLE `warta_terkini`
 --
 
 --
+-- AUTO_INCREMENT for table `dewan`
+--
+ALTER TABLE `dewan`
+  MODIFY `id_dewan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `jabatan`
+--
+ALTER TABLE `jabatan`
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `kontak_pengurus`
 --
 ALTER TABLE `kontak_pengurus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
+-- AUTO_INCREMENT for table `organisasi`
+--
+ALTER TABLE `organisasi`
+  MODIFY `id_organisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `saran_komentar`
 --
 ALTER TABLE `saran_komentar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `seksi`
+--
+ALTER TABLE `seksi`
+  MODIFY `id_seksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `struktur_organisasi`
+--
+ALTER TABLE `struktur_organisasi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
