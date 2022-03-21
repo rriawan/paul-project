@@ -34,35 +34,54 @@
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 				<li class="nav-item">
-					<a href="<?= base_url('admin/Dashboard')?>" class="nav-link <?php if($active_uri=="dashboard"){echo 'active';}?>">
+					<a href="<?= base_url('admin/Dashboard')?>"
+						class="nav-link <?php if($active_uri=="dashboard"){echo 'active';}?>">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
 						&nbsp;Dashboard
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?= base_url('admin/ManageUsers')?>" class="nav-link <?php if($active_uri == "manageuser"){echo 'active';}?>">
+					<a href="<?= base_url('admin/ManageUsers')?>"
+						class="nav-link <?php if($active_uri == "manageuser"){echo 'active';}?>">
 						<i class="nav-icon fas fa-users"></i>
 						&nbsp;User Management
 					</a>
-				</li>		
+				</li>
 				<li class="nav-item">
-					<a href="<?= base_url('admin/KontakPengurus')?>" class="nav-link <?php if($active_uri == "kontakpengurus"){echo 'active';}?>">
+					<a href="<?= base_url('admin/KontakPengurus')?>"
+						class="nav-link <?php if($active_uri == "kontakpengurus"){echo 'active';}?>">
 						<i class="nav-icon fas fa-user-shield"></i>
 						&nbsp;Kontak Pengurus
 					</a>
-				</li>	
+				</li>
 				<li class="nav-item">
-					<a href="<?= base_url('admin/SaranPengguna')?>" class="nav-link <?php if($active_uri == "saranpengguna"){echo 'active';}?>">
+					<a href="<?= base_url('admin/SaranPengguna')?>"
+						class="nav-link <?php if($active_uri == "saranpengguna"){echo 'active';}?>">
 						<i class="nav-icon far fa-comment-dots"></i>
 						&nbsp;Saran Pengguna
 					</a>
-				</li>		
+				</li>
 				<li class="nav-item">
-					<a href="<?= base_url('admin/WartaTerkini')?>" class="nav-link <?php if($active_uri == "wartaterkini"){echo 'active';}?>">
+					<a href="<?= base_url('admin/WartaTerkini')?>"
+						class="nav-link <?php if($active_uri == "wartaterkini"){echo 'active';}?>">
 						<i class="nav-icon far fa-newspaper"></i>
 						&nbsp;Warta Terkini
 					</a>
-				</li>							
+				</li>
+				<li class="nav-item">
+					<a href="<?= base_url('admin/Organisasi')?>"
+						class="nav-link <?php if($active_uri == "organisasi"){echo 'active';}?>">
+						<i class="nav-icon fas fa-sitemap"></i>
+						&nbsp;Komponen Organisasi
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?= base_url('admin/StrukturOrganisasi')?>"
+						class="nav-link <?php if($active_uri == "strukturorganisasi"){echo 'active';}?>">
+						<i class="nav-icon fas fa-users"></i>
+						&nbsp;Struktur Organisasi
+					</a>
+				</li>
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->
