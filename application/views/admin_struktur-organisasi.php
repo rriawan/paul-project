@@ -15,7 +15,7 @@
 									<th>ORGANISASI</th>
 									<th>JABATAN</th>
 									<th>NO TELP</th>
-									<th>URL FOTO</th>
+									<th>FOTO</th>
                   <th></th>
 								</tr>
 							</thead>

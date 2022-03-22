@@ -30,13 +30,14 @@ class StrukturOrganisasi extends CI_Controller {
 		foreach ($loaddata as $list) {
       
 			$btnSelect = "<a href='javascript:void(0)' strukturId='". $list->id."' class='edit-news' data-toggle='tooltip' title='EDIT ORGANISASI'><i class='far fa-edit'></i></a>";
-      
+      $image_arr = explode("/", "./temp-folder/".$list->img_url);
+			$image_name = end($image_arr);
 			$row = array();
 			$row[] = $list->Nama;
 			$row[] = $list->nama_organisasi;
 			$row[] = $list->nama_jabatan;
 			$row[] = $list->no_telp;
-			$row[] = $list->img_url;
+			$row[] = "<img style='width:70px; height:85px;' src='".base_url()."temp-folder/".$image_name."'>" ;
       $row[] = $btnSelect;
 			$data[] = $row;
 		}

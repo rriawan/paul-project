@@ -53,12 +53,15 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<input type="text" name="image_old" value="<?php echo $dataById->img_url;?>">
-					<input type="text" name="id_struktur" id="id_struktur" value="<?php echo $dataById->id;?>">
+					<input type="hidden" name="image_old" value="<?php echo $dataById->img_url;?>">
+					<input type="hidden" name="id_struktur" id="id_struktur" value="<?php echo $dataById->id;?>">
 					<label class="col-sm-3 col-form-label">FOTO</label>
 					<div class="col-9">
 						<input type="file" id="img_file" name="img_file">
 						<p class="help-block">Max. 2MB</p>
+						<div class="row">
+							<img style="width:70px; height:85px;" src="<?=base_url()?>temp-folder/<?=$dataById->img_url?>" alt="">
+						</div>
 					</div>
 				</div>
 				<div class="form-group row">
