@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 21, 2022 at 11:29 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Host: localhost:3306
+-- Generation Time: Mar 22, 2022 at 09:50 AM
+-- Server version: 5.7.33
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -186,14 +186,15 @@ CREATE TABLE `struktur_organisasi` (
 --
 
 INSERT INTO `struktur_organisasi` (`id`, `Nama`, `is_seksi`, `id_organisasi`, `id_dewan`, `id_seksi`, `id_jabatan`, `no_telp`, `img_url`) VALUES
-(1, 'Tirta Wapasha Wibowo', 0, 1, NULL, NULL, 1, '08123123123', NULL),
-(2, 'Andew Aditya Gultom', 0, 1, NULL, NULL, 2, '08123123123', NULL),
-(3, 'Kevin Sinurat', 0, 2, NULL, NULL, 4, '0181231231231', NULL),
-(4, 'Bistok Hutauruk', 0, 2, NULL, NULL, 5, '081432123123', NULL),
-(5, 'Manggala Pasaribu', 0, 3, NULL, NULL, 3, '08123123123', NULL),
-(6, 'Iwan Monang Sihite', 0, 3, NULL, NULL, 5, NULL, NULL),
-(7, 'Ehecatl Shenandoah Aucaman', 1, 3, 1, 1, 3, '08123123123', NULL),
-(8, 'Cahya Bagus Goyathlay', 1, 3, 1, 2, 7, '08123123123', NULL);
+(1, 'Tirta Wapasha Wibowo', 0, 1, NULL, NULL, 1, '08123123123', 'avatar.png'),
+(2, 'Andew Aditya Gultom', 0, 1, NULL, NULL, 2, '08123123123', 'avatar3.png'),
+(3, 'Kevin Sinurat', 0, 2, NULL, NULL, 4, '0181231231231', 'avatar4.png'),
+(4, 'Bistok Hutauruk', 0, 2, NULL, NULL, 5, '081432123123', 'avatar5.png'),
+(5, 'Manggala Pasaribu', 0, 3, NULL, NULL, 3, '08123123123', 'avatar6.png'),
+(6, 'Iwan Monang Sihite', 0, 3, NULL, NULL, 5, '0222222123', 'avatar51.png'),
+(7, 'Ehecatl Shenandoah Aucaman', 1, 3, 1, 1, 3, '08123123123', 'avatar8.png'),
+(8, 'Cahya Bagus Goyathlay', 1, 3, 1, 2, 7, '08123123123', 'avatar9.png'),
+(9, 'aswe aswwer asdf', 0, 2, 0, 0, 6, '0121231213', 'avatar2.png');
 
 -- --------------------------------------------------------
 
@@ -348,7 +349,7 @@ ALTER TABLE `seksi`
 -- AUTO_INCREMENT for table `struktur_organisasi`
 --
 ALTER TABLE `struktur_organisasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
