@@ -33,7 +33,7 @@
 			<div class="card card-primary card-outline">
 				<div class="card-header">
 					<h3 class="card-title">Struktur Seksi Dewan</h3>
-          <button class="btn btn-sm btn-primary float-right">Add Seksi Dewan</button>
+          <button class="btn btn-sm btn-primary float-right" id="add-seksidewan">Add Seksi Dewan</button>
 				</div>
 				<div class="card-body p-1">
 					<div class="table-responsive mailbox-messages">
@@ -150,6 +150,46 @@
 					$("#modalId").modal("show");
 					$('#modalIsi').html(data);
 					document.getElementById("modalTitle").innerHTML = 'Detail Struktur Organisasi';
+				}
+			});
+		});
+
+		$('#add-seksidewan').click(function () {
+			var aksi = 'Add Seksi Dewan';
+			$.ajax({
+				url: "<?=base_url('admin/StrukturOrganisasi/showModalAddDewan');?>",
+				method: 'post',
+				data: {
+					aksi: aksi
+				},
+
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$("#modalIsi").html(data);
+					document.getElementById("modalTitle").innerHTML = aksi;
+				}
+			});
+		});
+		$('#select-seksidewan').on('click', '.edit-news', function () {
+			var id_seksidewan = $(this).attr("id_seksidewan");
+			$.ajax({
+				url: "<?=base_url('admin/StrukturOrganisasi/showModalEditDewan');?>",
+				method: 'POST',
+				data: {
+					id_seksidewan: id_seksidewan,
+				},
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$('#modalIsi').html(data);
+					document.getElementById("modalTitle").innerHTML = 'Detail Struktur Dewan';
 				}
 			});
 		});

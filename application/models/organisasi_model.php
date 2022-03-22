@@ -84,8 +84,31 @@ class organisasi_model extends CI_Model
 		$sql = "SELECT a.id, A.Nama, A.id_organisasi, B.nama_organisasi, C.id_jabatan, C.nama_jabatan, A.no_telp, A.img_url FROM struktur_organisasi A
 						JOIN organisasi B ON A.id_organisasi = B.id_organisasi
 						JOIN jabatan C ON A.id_jabatan = C.id_jabatan
-						WHERE A.is_seksi = 0 AND id = $id";
+						WHERE A.is_seksi = 0 AND A.id = $id";
 		return $this->db->query($sql)->row();
 	}
 
+	function getDewanById($id)
+	{
+		$sql = "SELECT a.id, A.Nama, A.id_organisasi, B.nama_organisasi, C.id_jabatan, C.nama_jabatan, 
+						A.id_dewan, D.nama_dewan, A.id_seksi, E.nama_seksi, A.no_telp, A.img_url FROM struktur_organisasi A
+						JOIN organisasi B ON A.id_organisasi = B.id_organisasi
+						JOIN jabatan C ON A.id_jabatan = C.id_jabatan
+						JOIN dewan D ON A.id_dewan = D.id_dewan
+						JOIN seksi E ON A.id_seksi = E.id_seksi
+						WHERE A.is_seksi = 1 AND A.id = $id";
+		return $this->db->query($sql)->row();
+	}
+
+	function getSubDewan($id)
+	{
+		$sql = "SELECT * FROM seksi WHERE id_dewan = $id";
+		return $this->db->query($sql)->result();
+	}
+
+	function getIdDewan($id)
+	{
+		$sql = "SELECT id_dewan FROM struktur_organisasi WHERE id = $id";
+		return $this->db->query($sql)->row();
+	}
 }

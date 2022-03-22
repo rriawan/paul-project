@@ -8,23 +8,31 @@
 				<div class="form-group row">
 					<label class="col-sm-3 col-form-label">NAMA</label>
 					<div class="col-sm-9">
-						<input value="<?= $dataById->Nama ?>" type="text" id="nama" name="nama" class="form-control"
+						<input type="text" id="nama" name="nama" class="form-control"
 							placeholder="Nama Lengkap">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-3 col-form-label">ORGANISASI</label>
+					<label class="col-sm-3 col-form-label">DEWAN</label>
 					<div class="col-sm-9">
-						<select name="organisasiList" id="organisasiList" class="form-control mt-2 text-dark organisasiList">
+						<select name="dewanList" id="dewanList" class="form-control mt-2 text-dark dewanList">
+							<option value="0">- Pilih Organisasi -</option>
 							<?php
-							foreach($listOrganisasi as $row_org){
-								if($row_org->id_organisasi == $dataById->id_organisasi){
-									$select_org = "selected";
-								}else{
-									$select_org = "";
-								}
-								echo "<option $select_org value=".$row_org->id_organisasi.">".$row_org->nama_organisasi."</option>";
+							foreach($listDewan as $row_dewan){								
+								echo "<option value=".$row_dewan->id_dewan.">".$row_dewan->nama_dewan."</option>";
 							}
+							?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">SEKSI</label>
+					<div class="col-sm-9">
+						<select name="seksiList" id="seksiList" class="form-control mt-2 text-dark seksiList">
+							<?php
+							// foreach($listSeksi as $row_seksi){
+							// 	echo "<option value=".$row_seksi->id_seksi.">".$row_seksi->nama_seksi."</option>";
+							// }
 							?>
 						</select>
 					</div>
@@ -35,12 +43,7 @@
 						<select name="jabatanList" id="jabatanList" class="form-control mt-2 text-dark jabatanList">
 							<?php
 							foreach($listJabatan as $row_jab){
-								if($row_jab->id_jabatan == $dataById->id_jabatan){
-									$select_jab = "selected";
-								}else{
-									$select_jab = "";
-								}
-								echo "<option $select_jab value=".$row_jab->id_jabatan.">".$row_jab->nama_jabatan."</option>";
+								echo "<option value=".$row_jab->id_jabatan.">".$row_jab->nama_jabatan."</option>";
 							}
 							?>
 						</select>
@@ -49,12 +52,13 @@
 				<div class="form-group row">
 					<label class="col-sm-3 col-form-label">NO TELP</label>
 					<div class="col-sm-9">
-						<input value="<?=$dataById->no_telp?>" type="text" id="no_telp" name="no_telp" class="form-control" placeholder="Nomor Telefon">
+						<input type="text" id="no_telp" name="no_telp" class="form-control"
+							placeholder="Nomor Telefon">
 					</div>
 				</div>
 				<div class="form-group row">
-					<input type="hidden" name="image_old" value="<?php echo $dataById->img_url;?>">
-					<input type="hidden" name="id_struktur" id="id_struktur" value="<?php echo $dataById->id;?>">
+					<!-- <input type="hidden" name="image_old" value="<?php echo $dataById->img_url;?>"> -->
+					<!-- <input type="hidden" name="id_struktur" id="id_struktur" value="<?php echo $dataById->id;?>"> -->
 					<label class="col-sm-3 col-form-label">FOTO</label>
 					<div class="col-9">
 						<input type="file" id="img_file" name="img_file">
@@ -77,33 +81,57 @@
 </div>
 
 <script>
-	// $("#jabatanList").change(function () {
-	// 	var jabId = $(this).val();
-	// 	$('#jab-temp').val(jabId);
-	// });
-	// $("#organisasiList").change(function () {
-	// 	var orgId = $(this).val();
-	// 	$('#org-temp').val(orgId);
-	// });
+	$(document).ready(function () {
+
+		$('#dewanList').change(function () {
+			var id = $(this).val();
+			$.ajax({
+				url: "<?php echo base_url('admin/StrukturOrganisasi/getSub');?>",
+				method: "POST",
+				data: {
+					id: id
+				},
+				async: true,
+				dataType: 'json',
+				success: function (data) {
+
+					var html = '';
+					var i;
+					for (i = 0; i < data.length; i++) {
+						html += '<option value=' + data[i].id_seksi + '>' + data[i].nama_seksi +
+							'</option>';
+					}
+					$('#seksiList').html(html);
+
+				}
+			});
+			return false;
+		});
+
+	});
 	$('#submit').submit(function (e) {
 		e.preventDefault();
 
 		var nama = $('#nama').val();
+		var dewan_id = $('#dewanList').val();
+		var seksi_id = $('#seksiList').val();
 		var org_id = $('#organisasiList').val();
 		var jab_id = $('#jabatanList').val();
 		var no_telp = $('#no_telp').val();
 		var img = $('#img_file').val();
 		if (nama == "") {
 			alert("Nama harus diisi!");
-		} else if (org_id == "0" || org_id == "") {
-			alert("Organisasi Harus Dipilih!");
+		} else if (dewan_id == "0" || dewan_id == "") {
+			alert("Dewan Harus Dipilih!");
+		} else if (seksi_id == "0" || seksi_id == "") {
+			alert("Dewan Harus Dipilih!");
 		} else if (jab_id == "0" || jab_id == "") {
 			alert("Jabatan harus dipilih!");
 		} else if (no_telp == "") {
 			alert("No Telp Harus Diisi!")
 		} else {
 			$.ajax({
-				url: '<?php echo base_url('admin/StrukturOrganisasi/updateStruktur') ?>',
+				url: '<?php echo base_url('admin/StrukturOrganisasi/insertSeksiDewan') ?>',
 				type: "post",
 				data: new FormData(this),
 				processData: false,
