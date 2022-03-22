@@ -53,5 +53,39 @@ class organisasi_model extends CI_Model
 		return $this->db->query($sql)->result();
 	}
 
+	function insertStruktur($data)
+	{
+		$sql = "INSERT INTO struktur_organisasi (Nama, is_seksi, id_organisasi, id_dewan, id_seksi, id_jabatan, no_telp, img_url)
+						VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		if($this->db->query($sql, $data)){
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
+
+	function updateStruktur($id, $data)
+	{
+		$sql = "UPDATE struktur_organisasi SET 
+									Nama = ?, 
+									is_seksi = ?, 
+									id_organisasi = ?, 
+									id_dewan = ?, 
+									id_seksi = ?, 
+									id_jabatan = ?, 
+									no_telp = ?, 
+									img_url = ?
+						WHERE id = $id";
+		return $this->db->query($sql, $data);
+	}
+
+	function getStrukturById($id)
+	{
+		$sql = "SELECT a.id, A.Nama, A.id_organisasi, B.nama_organisasi, C.id_jabatan, C.nama_jabatan, A.no_telp, A.img_url FROM struktur_organisasi A
+						JOIN organisasi B ON A.id_organisasi = B.id_organisasi
+						JOIN jabatan C ON A.id_jabatan = C.id_jabatan
+						WHERE A.is_seksi = 0 AND id = $id";
+		return $this->db->query($sql)->row();
+	}
 
 }

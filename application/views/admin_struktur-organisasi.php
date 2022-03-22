@@ -4,7 +4,7 @@
 			<div class="card card-primary card-outline">
 				<div class="card-header">
 					<h3 class="card-title">Struktur Organisasi</h3>
-          <button class="btn btn-sm btn-primary float-right">Add Struktur Organisasi</button>
+          <button id="add-struktur" class="btn btn-sm btn-primary float-right">Add Struktur Organisasi</button>
 				</div>
 				<div class="card-body p-1">
 					<div class="table-responsive mailbox-messages">
@@ -19,7 +19,7 @@
                   <th></th>
 								</tr>
 							</thead>
-							<tbody id="select-strukturorganisasi">
+							<tbody id="select-struktur">
 
 							</tbody>
 						</table>
@@ -113,25 +113,45 @@
 				}
 			},
 		});
-		// $('#select').on('click', '.edit-news', function () {
-		// 	var ItemID = $(this).attr("ItemID");
-		// 	$.ajax({
-		// 		url: "<?=base_url('admin/WartaTerkini/ModalWartaTerkini');?>",
-		// 		method: 'POST',
-		// 		data: {
-		// 			ItemID: ItemID,
-		// 		},
 
-		// 		success: function (data) {
-		// 			$("#modalId").modal({
-		// 				backdrop: 'static',
-		// 				keyboard: false,
-		// 			});
-		// 			$("#modalId").modal("show");
-		// 			$('#modalIsi').html(data);
-		// 			document.getElementById("modalTitle").innerHTML = 'Detail Warta Terkini';
-		// 		}
-		// 	});
-		// });
+		$('#add-struktur').click(function () {
+			var aksi = 'Add Struktur Organisasi';
+			$.ajax({
+				url: "<?=base_url('admin/StrukturOrganisasi/showModalAdd');?>",
+				method: 'post',
+				data: {
+					aksi: aksi
+				},
+
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$("#modalIsi").html(data);
+					document.getElementById("modalTitle").innerHTML = aksi;
+				}
+			});
+		});
+		$('#select-struktur').on('click', '.edit-news', function () {
+			var strukturId = $(this).attr("strukturId");
+			$.ajax({
+				url: "<?=base_url('admin/StrukturOrganisasi/showModalEdit');?>",
+				method: 'POST',
+				data: {
+					strukturId: strukturId,
+				},
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$('#modalIsi').html(data);
+					document.getElementById("modalTitle").innerHTML = 'Detail Struktur Organisasi';
+				}
+			});
+		});
 	});
 </script>
