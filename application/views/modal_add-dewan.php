@@ -41,6 +41,7 @@
 					<label class="col-sm-3 col-form-label">JABATAN</label>
 					<div class="col-sm-9">
 						<select name="jabatanList" id="jabatanList" class="form-control mt-2 text-dark jabatanList">
+							<option value="0">- Pilih Organisasi -</option>							
 							<?php
 							foreach($listJabatan as $row_jab){
 								echo "<option value=".$row_jab->id_jabatan.">".$row_jab->nama_jabatan."</option>";

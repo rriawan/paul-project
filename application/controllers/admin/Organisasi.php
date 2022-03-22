@@ -111,4 +111,28 @@ class Organisasi extends CI_Controller {
 		//output dalam format JSON
 		echo json_encode($output);
   }
+
+	public function showModalAddOrg()
+	{
+		$this->load->view('modal_add-orglist');	
+	}
+
+	public function showModalEditOrg()
+	{
+		$id = $this->input->post('IdOrganisasi');
+		$data['dataById'] = $this->organisasi_model->showOrgById($id);
+		$this->load->view('modal_edit-orglist', $data);
+	}
+
+	public function insertOrganisasi()
+	{
+		$organisasi = $this->input->post('organisasi');
+		$this->organisasi_model->insertOrgList($organisasi);
+	}
+	public function updateOrganisasi()
+	{
+		$id = $this->input->post('id_organisasi');
+		$nm_org = $this->input->post('organisasi');
+		$this->organisasi_model->updateOrgList($nm_org, $id);
+	}
 }

@@ -8,6 +8,24 @@ class organisasi_model extends CI_Model
 		parent::__construct();
 	}
   
+	function insertOrgList($organisasi)
+	{
+		$sql = "INSERT INTO organisasi (nama_organisasi) VALUES('$organisasi')";
+		return $this->db->query($sql);
+	}
+
+	function updateOrgList($nm_org, $id)
+	{
+		$sql = "UPDATE organisasi SET nama_organisasi = '$nm_org' WHERE id_organisasi = $id";
+		return $this->db->query($sql);
+	}
+
+	function showOrgById($id)
+	{
+		$sql = "SELECT * FROM organisasi WHERE id_organisasi = $id";
+		return $this->db->query($sql)->row();
+	}
+
 	function listOrganisasi()
 	{
 		$sql = "SELECT * FROM organisasi";

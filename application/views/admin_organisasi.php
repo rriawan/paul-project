@@ -4,7 +4,7 @@
 			<div class="card card-primary card-outline">
 				<div class="card-header">
 					<h3 class="card-title">Organisasi</h3>
-          <button class="btn btn-sm btn-primary float-right">Add Organisasi</button>
+          <button class="btn btn-sm btn-primary float-right" id="add-organisasi">Add Organisasi</button>
 				</div>
 				<div class="card-body p-1">
 					<div class="table-responsive mailbox-messages">
@@ -99,7 +99,7 @@
   </div>
 </div>
 <div class="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="modalTitle"></h5>
@@ -180,25 +180,45 @@
 			},
 		});
 
-		// $('#select').on('click', '.edit-news', function () {
-		// 	var ItemID = $(this).attr("ItemID");
-		// 	$.ajax({
-		// 		url: "<?=base_url('admin/WartaTerkini/ModalWartaTerkini');?>",
-		// 		method: 'POST',
-		// 		data: {
-		// 			ItemID: ItemID,
-		// 		},
+		$('#add-organisasi').click(function () {
+			var aksi = 'Add List Organisasi';
+			$.ajax({
+				url: "<?=base_url('admin/Organisasi/showModalAddOrg');?>",
+				method: 'post',
+				data: {
+					aksi: aksi
+				},
 
-		// 		success: function (data) {
-		// 			$("#modalId").modal({
-		// 				backdrop: 'static',
-		// 				keyboard: false,
-		// 			});
-		// 			$("#modalId").modal("show");
-		// 			$('#modalIsi').html(data);
-		// 			document.getElementById("modalTitle").innerHTML = 'Detail Warta Terkini';
-		// 		}
-		// 	});
-		// });
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$("#modalIsi").html(data);
+					document.getElementById("modalTitle").innerHTML = aksi;
+				}
+			});
+		});
+		$('#select-organisasi').on('click', '.edit-news', function () {
+			var IdOrganisasi = $(this).attr("IdOrganisasi");
+			$.ajax({
+				url: "<?=base_url('admin/Organisasi/showModalEditOrg');?>",
+				method: 'POST',
+				data: {
+					IdOrganisasi: IdOrganisasi,
+				},
+
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$('#modalIsi').html(data);
+					document.getElementById("modalTitle").innerHTML = 'Edit Organisasi List';
+				}
+			});
+		});
 	});
 </script>
