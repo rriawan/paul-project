@@ -27,7 +27,7 @@
 			<div class="card card-primary card-outline">
 				<div class="card-header">
 					<h3 class="card-title">Dewan</h3>
-          <button class="btn btn-sm btn-primary float-right">Add Dewan</button>
+          <button class="btn btn-sm btn-primary float-right" id="add-dewan">Add Dewan</button>
 				</div>
 				<div class="card-body p-1">
 					<div class="table-responsive mailbox-messages">
@@ -53,7 +53,7 @@
 			<div class="card card-primary card-outline">
 				<div class="card-header">
 					<h3 class="card-title">Seksi</h3>
-          <button class="btn btn-sm btn-primary float-right">Add Seksi</button>
+          <button class="btn btn-sm btn-primary float-right" id="add-seksi">Add Seksi</button>
 				</div>
 				<div class="card-body p-1">
 					<div class="table-responsive mailbox-messages">
@@ -77,7 +77,7 @@
 			<div class="card card-primary card-outline">
 				<div class="card-header">
 					<h3 class="card-title">Jabatan</h3>
-          <button class="btn btn-sm btn-primary float-right">Add Jabatan</button>
+          <button class="btn btn-sm btn-primary float-right" id="add-jabatan">Add Jabatan</button>
 				</div>
 				<div class="card-body p-1">
 					<div class="table-responsive mailbox-messages">
@@ -217,6 +217,127 @@
 					$("#modalId").modal("show");
 					$('#modalIsi').html(data);
 					document.getElementById("modalTitle").innerHTML = 'Edit Organisasi List';
+				}
+			});
+		});
+
+		$('#add-dewan').click(function () {
+			var aksi = 'Add List Dewan';
+			$.ajax({
+				url: "<?=base_url('admin/Organisasi/showModalAddDewan');?>",
+				method: 'post',
+				data: {
+					aksi: aksi
+				},
+
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$("#modalIsi").html(data);
+					document.getElementById("modalTitle").innerHTML = aksi;
+				}
+			});
+		});
+		$('#select-dewan').on('click', '.edit-news', function () {
+			var IdDewan = $(this).attr("IdDewan");
+			$.ajax({
+				url: "<?=base_url('admin/Organisasi/showModalEditDewan');?>",
+				method: 'POST',
+				data: {
+					IdDewan:IdDewan,
+				},
+
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$('#modalIsi').html(data);
+					document.getElementById("modalTitle").innerHTML = 'Edit Dewan List';
+				}
+			});
+		});
+		$('#add-seksi').click(function () {
+			var aksi = 'Add List Seksi';
+			$.ajax({
+				url: "<?=base_url('admin/Organisasi/showModalAddSeksi');?>",
+				method: 'post',
+				data: {
+					aksi: aksi
+				},
+
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$("#modalIsi").html(data);
+					document.getElementById("modalTitle").innerHTML = aksi;
+				}
+			});
+		});
+		$('#select-seksi').on('click', '.edit-news', function () {
+			var IdSeksi = $(this).attr("IdSeksi");
+			$.ajax({
+				url: "<?=base_url('admin/Organisasi/showModalEditSeksi');?>",
+				method: 'POST',
+				data: {
+					IdSeksi:IdSeksi,
+				},
+
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$('#modalIsi').html(data);
+					document.getElementById("modalTitle").innerHTML = 'Edit Seksi List';
+				}
+			});
+		});
+		$('#add-jabatan').click(function () {
+			var aksi = 'Add List Jabatan';
+			$.ajax({
+				url: "<?=base_url('admin/Organisasi/showModalAddJabatan');?>",
+				method: 'post',
+				data: {
+					aksi: aksi
+				},
+
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$("#modalIsi").html(data);
+					document.getElementById("modalTitle").innerHTML = aksi;
+				}
+			});
+		});
+		$('#select-jabatan').on('click', '.edit-news', function () {
+			var IdJabatan = $(this).attr("IdJabatan");
+			$.ajax({
+				url: "<?=base_url('admin/Organisasi/showModalEditJabatan');?>",
+				method: 'POST',
+				data: {
+					IdJabatan: IdJabatan,
+				},
+
+				success: function (data) {
+					$("#modalId").modal({
+						backdrop: 'static',
+						keyboard: false,
+					});
+					$("#modalId").modal("show");
+					$('#modalIsi').html(data);
+					document.getElementById("modalTitle").innerHTML = 'Edit Jabatan List';
 				}
 			});
 		});

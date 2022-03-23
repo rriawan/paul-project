@@ -20,9 +20,63 @@ class organisasi_model extends CI_Model
 		return $this->db->query($sql);
 	}
 
+	function insertDewanList($dewan)
+	{
+		$sql = "INSERT INTO dewan (nama_dewan) VALUES ('$dewan')";
+		return $this->db->query($sql);
+	}
+
+	function updateDewanList($nm_dewan, $id)
+	{
+		$sql = "UPDATE dewan SET nama_dewan = '$nm_dewan' WHERE id_dewan = $id";
+		return $this->db->query($sql);
+	}
+
+	function insertSeksiList($seksi, $id_dewan)
+	{		
+		$sql = "INSERT INTO seksi (id_dewan, nama_seksi) VALUES ($id_dewan, '$seksi')";
+		return $this->db->query($sql);
+	}
+
+	function updateSeksiList($id_dewan, $nm_seksi, $id)
+	{
+		$sql = "UPDATE seksi SET id_dewan = $id_dewan, nama_seksi = '$nm_seksi' WHERE id_seksi = $id";
+		return $this->db->query($sql);
+	}
+
+	function insertJabatanList($jabatan)
+	{		
+		$sql = "INSERT INTO jabatan (nama_jabatan) VALUES ('$jabatan')";
+		return $this->db->query($sql);
+	}
+
+	function updateJabatanList($jabatan, $id)
+	{
+		$sql = "UPDATE jabatan SET nama_jabatan = '$jabatan' WHERE id_jabatan = $id";
+		return $this->db->query($sql);
+	}
+
 	function showOrgById($id)
 	{
 		$sql = "SELECT * FROM organisasi WHERE id_organisasi = $id";
+		return $this->db->query($sql)->row();
+	}
+
+	function showDewanById($id)
+	{
+		$sql = "SELECT * FROM dewan WHERE id_dewan = $id";
+		return $this->db->query($sql)->row();
+	}
+
+	function showSeksiById($id)
+	{
+		$sql = "SELECT A.*, B.nama_dewan FROM seksi A JOIN dewan B ON a.id_dewan = b.id_dewan WHERE id_seksi = $id";
+		return $this->db->query($sql)->row();
+	}
+
+	function showJabatanById($id)
+	{
+		$sql = "SELECT * FROM jabatan WHERE id_jabatan = $id";
 		return $this->db->query($sql)->row();
 	}
 

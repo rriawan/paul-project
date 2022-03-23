@@ -124,15 +124,95 @@ class Organisasi extends CI_Controller {
 		$this->load->view('modal_edit-orglist', $data);
 	}
 
+	public function showModalAddDewan()
+	{
+		$this->load->view('modal_add-dewanlist');
+	}
+
+	public function showModalEditDewan()
+	{
+		$id = $this->input->post('IdDewan');
+		$data['dataById'] = $this->organisasi_model->showDewanById($id);
+		$this->load->view('modal_edit-dewanlist', $data);
+	}
+
+	public function showModalAddSeksi()
+	{
+		$data['listDewan'] = $this->organisasi_model->listDewan();
+		$this->load->view('modal_add-seksilist', $data);
+	}
+
+	public function showModalEditSeksi()
+	{
+		$id = $this->input->post('IdSeksi');
+		$data['listDewan'] = $this->organisasi_model->listDewan();
+		$data['dataById'] = $this->organisasi_model->showSeksiById($id);
+		$this->load->view('modal_edit-seksilist', $data);
+	}
+
+	public function showModalAddJabatan()
+	{
+		$this->load->view('modal_add-jablist');
+	}
+
+	public function showModalEditJabatan()
+	{
+		$id = $this->input->post('IdJabatan');
+		$data['dataById'] = $this->organisasi_model->showJabatanById($id);
+		$this->load->view('modal_edit-jabatanlist', $data);
+	}
+
 	public function insertOrganisasi()
 	{
 		$organisasi = $this->input->post('organisasi');
 		$this->organisasi_model->insertOrgList($organisasi);
 	}
+
 	public function updateOrganisasi()
 	{
 		$id = $this->input->post('id_organisasi');
 		$nm_org = $this->input->post('organisasi');
 		$this->organisasi_model->updateOrgList($nm_org, $id);
+	}
+
+	public function insertDewan()
+	{
+		$dewan = $this->input->post('dewan');
+		$this->organisasi_model->insertDewanList($dewan);
+	}
+
+	public function updateDewan()
+	{
+		$id = $this->input->post('id_dewan');
+		$nm_dewan = $this->input->post('dewan');
+		$this->organisasi_model->updateDewanList($nm_dewan, $id);
+	}
+
+	public function insertSeksi()
+	{
+		$seksi = $this->input->post('seksi');
+		$id_dewan = $this->input->post('dewanList');
+		$this->organisasi_model->insertSeksiList($seksi, $id_dewan);
+	}
+
+	public function updateSeksi()
+	{
+		$id = $this->input->post('id_seksi');
+		$id_dewan = $this->input->post('dewanList');
+		$nm_seksi = $this->input->post('seksi');
+		$this->organisasi_model->updateSeksiList($id_dewan, $nm_seksi, $id);
+	}
+
+	public function insertJabatan()
+	{
+		$jabatan = $this->input->post('jabatan');
+		$this->organisasi_model->insertJabatanList($jabatan);
+	}
+
+	public function updateJabatan()
+	{
+		$id = $this->input->post('id_jabatan');
+		$nm_jabatan = $this->input->post('jabatan');
+		$this->organisasi_model->updateJabatanList($nm_jabatan, $id);
 	}
 }
