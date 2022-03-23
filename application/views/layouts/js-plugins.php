@@ -21,6 +21,8 @@
 <script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- custom file input -->
 <script src="<?= base_url() ?>assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-
+<!-- InputMask -->
+<script src="<?= base_url() ?>assets/plugins/moment/moment.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/inputmask/jquery.inputmask.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url() ?>assets/dist/js/adminlte.min.js"></script>

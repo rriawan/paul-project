@@ -69,6 +69,20 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="<?= base_url('admin/WartaJemaat')?>"
+						class="nav-link <?php if($active_uri == "wartajemaat"){echo 'active';}?>">
+						<i class="nav-icon far fa-file-alt"></i>
+						&nbsp;Warta Jemaat
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?= base_url('admin/RenunganHarian')?>"
+						class="nav-link <?php if($active_uri == "renunganharian"){echo 'active';}?>">
+						<i class="nav-icon far fa-newspaper"></i>
+						&nbsp;Renungan Harian
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="<?= base_url('admin/Organisasi')?>"
 						class="nav-link <?php if($active_uri == "organisasi"){echo 'active';}?>">
 						<i class="nav-icon fas fa-sitemap"></i>

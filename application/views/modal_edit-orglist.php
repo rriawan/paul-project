@@ -26,8 +26,7 @@
 	$('#submit').submit(function (e) {
 		e.preventDefault();
 
-		var nama_org = $('#organisasi').val();
-	
+		var nama_org = $('#organisasi').val();	
 		if (nama_org == "") {
 			alert("Nama Organisasi harus diisi!");
 		} else {
