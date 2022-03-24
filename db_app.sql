@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Mar 22, 2022 at 09:50 AM
--- Server version: 5.7.33
--- PHP Version: 7.4.26
+-- Host: 127.0.0.1
+-- Generation Time: Mar 24, 2022 at 05:05 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -109,6 +109,55 @@ INSERT INTO `organisasi` (`id_organisasi`, `nama_organisasi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pemasukan`
+--
+
+CREATE TABLE `pemasukan` (
+  `id` int(11) NOT NULL,
+  `Tanggal` date NOT NULL,
+  `pdf_doc` varchar(255) NOT NULL,
+  `Uraian` varchar(255) NOT NULL,
+  `Penerimaan` float NOT NULL,
+  `Pengeluaran` float NOT NULL,
+  `Saldo` float NOT NULL,
+  `UpdateBy` varchar(255) NOT NULL,
+  `UpdateDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pemasukan`
+--
+
+INSERT INTO `pemasukan` (`id`, `Tanggal`, `pdf_doc`, `Uraian`, `Penerimaan`, `Pengeluaran`, `Saldo`, `UpdateBy`, `UpdateDate`) VALUES
+(1, '2022-03-24', 'TES.pdf', 'tes1', 1200000, 0, 1200000, 'admin', '2022-03-24 15:12:03'),
+(2, '2022-03-24', 'tes.pdf', 'tes2', 0, 100000, 1100000, 'admin', '2022-03-24 15:12:03'),
+(3, '2022-03-24', 'TES.pdf', 'tes1', 200000, 0, 1300000, 'admin', '2022-03-24 15:12:03'),
+(7, '2022-03-24', 'SAMPLE_PDF1.pdf', 'asas', 1145660, 0, 2445660, 'admin', '2022-03-24 22:02:04'),
+(8, '2022-03-24', 'SAMPLE_PDF3.pdf', 'tessssssss', 0, 3489760, -1044100, 'admin', '2022-03-24 22:05:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `renungan_harian`
+--
+
+CREATE TABLE `renungan_harian` (
+  `id` int(11) NOT NULL,
+  `Renungan` text NOT NULL,
+  `UpdateBy` varchar(255) NOT NULL,
+  `UpdateDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `renungan_harian`
+--
+
+INSERT INTO `renungan_harian` (`id`, `Renungan`, `UpdateBy`, `UpdateDate`) VALUES
+(1, 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat, sit architecto officiis, mollitia ex incidunt nemo sint expedita dolor fugiat neque, provident voluptatibus repudiandae optio! \r\n\r\nIllum dignissimos, hic nihil veniam distinctio reprehenderit, possimus ut tempore eveniet nam facere nesciunt laudantium quidem, suscipit harum nobis dicta quasi delectus! ', 'admin', '2022-03-23 20:01:51');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `saran_komentar`
 --
 
@@ -192,9 +241,10 @@ INSERT INTO `struktur_organisasi` (`id`, `Nama`, `is_seksi`, `id_organisasi`, `i
 (4, 'Bistok Hutauruk', 0, 2, NULL, NULL, 5, '081432123123', 'avatar5.png'),
 (5, 'Manggala Pasaribu', 0, 3, NULL, NULL, 3, '08123123123', 'avatar6.png'),
 (6, 'Iwan Monang Sihite', 0, 3, NULL, NULL, 5, '0222222123', 'avatar51.png'),
-(7, 'Ehecatl Shenandoah Aucaman', 1, 3, 1, 1, 3, '08123123123', 'avatar8.png'),
-(8, 'Cahya Bagus Goyathlay', 1, 3, 1, 2, 7, '08123123123', 'avatar9.png'),
-(9, 'aswe aswwer asdf', 0, 2, 0, 0, 6, '0121231213', 'avatar2.png');
+(7, 'Ehecatl Shenandoah Aucaman', 1, 3, 2, 9, 3, '0819876554331', 'avatar1.png'),
+(8, 'Cahya Bagus Goyathlay', 1, 3, 3, 12, 7, '08123123123', 'avatar21.png'),
+(9, 'aswe aswwer asdf', 0, 2, 0, 0, 6, '0121231213', 'avatar2.png'),
+(10, 'Bonar Sihotang', 1, 3, 2, 10, 6, '080989999', 'avatar41.png');
 
 -- --------------------------------------------------------
 
@@ -226,6 +276,28 @@ INSERT INTO `user` (`id`, `Name`, `Username`, `Email`, `PhoneNumber`, `Password`
 (11, 'Apui', 'opop', 'apui@user.com', '081234567890', '$2y$12$7wjDPkKMFeAhDomW9bIrlO7pQiEU.PYscXfN9NSMT4O7.VRPWlbQK', 0, 1, '2022-03-11 16:48:23'),
 (12, 'Apau', 'kakak', 'apau@user.com', '081234567890', '$2y$12$LBuj/L8j4B.5L6HcbLowM.z9mvjPU813sSI6zA2LRtNaA1ejALDOa', 0, 1, '2022-03-11 16:48:53'),
 (13, 'Atek', 'kokok', 'atek@user.com', '081234567890', '$2y$12$eRpJnwV7XF5e.lXFoJeJJu77/aYlI/.4frxuoxq8mk62sauhGcuRa', 0, 0, '2022-03-11 16:50:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `warta_jemaat`
+--
+
+CREATE TABLE `warta_jemaat` (
+  `id` int(11) NOT NULL,
+  `Judul` varchar(255) NOT NULL,
+  `pdf_doc` varchar(255) NOT NULL,
+  `UpdateBy` varchar(255) NOT NULL,
+  `UpdateDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `warta_jemaat`
+--
+
+INSERT INTO `warta_jemaat` (`id`, `Judul`, `pdf_doc`, `UpdateBy`, `UpdateDate`) VALUES
+(5, 'sample0', 'SAMPLE_PDF2.pdf', 'admin', '2022-03-24 01:13:42'),
+(6, 'Sampel 23', 'SAMPLE_PDF.pdf', 'admin', '2022-03-24 01:14:18');
 
 -- --------------------------------------------------------
 
@@ -276,6 +348,18 @@ ALTER TABLE `organisasi`
   ADD PRIMARY KEY (`id_organisasi`);
 
 --
+-- Indexes for table `pemasukan`
+--
+ALTER TABLE `pemasukan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `renungan_harian`
+--
+ALTER TABLE `renungan_harian`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `saran_komentar`
 --
 ALTER TABLE `saran_komentar`
@@ -297,6 +381,12 @@ ALTER TABLE `struktur_organisasi`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `warta_jemaat`
+--
+ALTER TABLE `warta_jemaat`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -331,7 +421,19 @@ ALTER TABLE `kontak_pengurus`
 -- AUTO_INCREMENT for table `organisasi`
 --
 ALTER TABLE `organisasi`
-  MODIFY `id_organisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_organisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `pemasukan`
+--
+ALTER TABLE `pemasukan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `renungan_harian`
+--
+ALTER TABLE `renungan_harian`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `saran_komentar`
@@ -349,13 +451,19 @@ ALTER TABLE `seksi`
 -- AUTO_INCREMENT for table `struktur_organisasi`
 --
 ALTER TABLE `struktur_organisasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `warta_jemaat`
+--
+ALTER TABLE `warta_jemaat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `warta_terkini`

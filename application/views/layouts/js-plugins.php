@@ -24,5 +24,8 @@
 <!-- InputMask -->
 <script src="<?= base_url() ?>assets/plugins/moment/moment.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/inputmask/jquery.inputmask.min.js"></script>
+<!-- DatePicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url() ?>assets/dist/js/adminlte.min.js"></script>

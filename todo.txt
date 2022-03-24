@@ -7,7 +7,7 @@ Create Jadwal Ibadah Lingkungan
 Create Jadwal Ibadah Perkumpulan
   Informasi Data Jemaat, Manage User
   Warta Terkini (Edit)
-Informasi Pemasukan dan Pengeluaran Tiap Minggu
+  Informasi Pemasukan dan Pengeluaran Tiap Minggu
   Informasi Struktur Kepengurusan Gereja
   Warta Jemaat (PDF)
   Renungan Harian
