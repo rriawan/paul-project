@@ -1,10 +1,10 @@
 Admin Page : 
   Login - Logout
 View Konten
-Create Profile Gereja
-Create Jadwal Ibadah Mingguan
-Create Jadwal Ibadah Lingkungan
-Create Jadwal Ibadah Perkumpulan
+  Create Profile Gereja
+  Create Jadwal Ibadah Mingguan
+  Create Jadwal Ibadah Lingkungan
+  Create Jadwal Ibadah Perkumpulan
   Informasi Data Jemaat, Manage User
   Warta Terkini (Edit)
   Informasi Pemasukan dan Pengeluaran Tiap Minggu

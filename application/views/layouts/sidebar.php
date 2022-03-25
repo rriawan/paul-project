@@ -41,6 +41,20 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="<?= base_url('admin/ProfileGereja')?>"
+						class="nav-link <?php if($active_uri=="profilegereja"){echo 'active';}?>">
+						<i class="nav-icon fas fa-church"></i>
+						&nbsp;Profile Gereja
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?= base_url('admin/JadwalIbadah')?>"
+						class="nav-link <?php if($active_uri=="jadwalibadah"){echo 'active';}?>">
+						<i class="nav-icon fas fa-clipboard-list"></i>
+						&nbsp;Jadwal Ibadah
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="<?= base_url('admin/ManageUsers')?>"
 						class="nav-link <?php if($active_uri == "manageuser"){echo 'active';}?>">
 						<i class="nav-icon fas fa-users"></i>
