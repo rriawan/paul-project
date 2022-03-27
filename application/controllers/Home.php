@@ -5,7 +5,7 @@ class Home extends CI_Controller {
 
 	public function __construct() {        
 		parent::__construct();
-		$this->load->model('wartaTerkini_model');
+		$this->load->model('userpage_model');
 	}
 
 	public function index()
@@ -14,7 +14,8 @@ class Home extends CI_Controller {
 			'title' => 'Beranda',
 			'content' => 'user_home',			
 			'active_uri' => 'home',
-			'wartaterkini' => $this->wartaTerkini_model->detailWartaTerkini(1)
+			'wartaterkini' => $this->userpage_model->detailWartaTerkini(1),
+			'renunganHarian' => $this->userpage_model->getRenunganUser()
 		);
 		$this->load->view('user-layout/wrappers.php', $data, FALSE);
 	}

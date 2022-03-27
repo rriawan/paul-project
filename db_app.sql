@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 24, 2022 at 05:05 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Host: localhost:3306
+-- Generation Time: Mar 25, 2022 at 04:41 PM
+-- Server version: 5.7.33
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,6 +64,50 @@ INSERT INTO `jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
 (5, 'Sekretaris'),
 (6, 'Bendahara'),
 (7, 'Anggota');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jadwal_ibadah`
+--
+
+CREATE TABLE `jadwal_ibadah` (
+  `id` int(11) NOT NULL,
+  `id_jenis` int(11) NOT NULL,
+  `nama_jadwal` varchar(255) NOT NULL,
+  `hari` varchar(255) NOT NULL,
+  `keterangan` text NOT NULL,
+  `UpdateBy` varchar(255) NOT NULL,
+  `UpdateDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jadwal_ibadah`
+--
+
+INSERT INTO `jadwal_ibadah` (`id`, `id_jenis`, `nama_jadwal`, `hari`, `keterangan`, `UpdateBy`, `UpdateDate`) VALUES
+(1, 2, 'Jadwal Ibdah mingguan', 'Senin', 'Pukul 07.00 WIB Bahasa Indonesia\r\n', 'admin', '2022-03-25 18:01:20'),
+(2, 1, 'Ibadah Lingkungan 2', 'Minggu', 'sip sip', 'admin', '2022-03-25 18:04:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jenis_jadwalibadah`
+--
+
+CREATE TABLE `jenis_jadwalibadah` (
+  `id_jenis` int(11) NOT NULL,
+  `keterangan_jenis` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jenis_jadwalibadah`
+--
+
+INSERT INTO `jenis_jadwalibadah` (`id_jenis`, `keterangan_jenis`) VALUES
+(1, 'Ibadah Mingguan'),
+(2, 'Ibadah Lingkungan'),
+(3, 'Ibadah Perkumpulan');
 
 -- --------------------------------------------------------
 
@@ -138,6 +182,29 @@ INSERT INTO `pemasukan` (`id`, `Tanggal`, `pdf_doc`, `Uraian`, `Penerimaan`, `Pe
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `profile_gereja`
+--
+
+CREATE TABLE `profile_gereja` (
+  `id` int(11) NOT NULL,
+  `img_url` varchar(255) DEFAULT NULL,
+  `Judul` varchar(255) NOT NULL,
+  `Rincian` text NOT NULL,
+  `UpdateBy` varchar(255) NOT NULL,
+  `UpdateDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `profile_gereja`
+--
+
+INSERT INTO `profile_gereja` (`id`, `img_url`, `Judul`, `Rincian`, `UpdateBy`, `UpdateDate`) VALUES
+(1, 'blog-inside-post.jpg', 'Dolorum optio tempore voluptas dignissimos ', 'Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta. Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.\r\n\r\nSit repellat hic cupiditate hic ut nemo. Quis nihil sunt non reiciendis. Sequi in accusamus harum vel aspernatur. Excepturi numquam nihil cumque odio. Et voluptate cupiditate\r\n\r\nSed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat. Dolor porro tempora et quibusdam voluptas. Beatae aut at ad qui tempore corrupti velit quisquam rerum. Omnis dolorum exercitationem harum qui qui blanditiis neque. Iusto autem itaque. Repudiandae hic quae aspernatur ea neque qui. Architecto voluptatem magni. Vel magnam quod et tempora deleniti error rerum nihil tempora', 'admin', '2022-03-25 11:53:56'),
+(2, 'blog-recent-4.jpg', 'Et quae iure vel ut odit alias.', 'Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui. Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea. Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.', 'admin', '2022-03-25 11:55:03');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `renungan_harian`
 --
 
@@ -178,7 +245,7 @@ CREATE TABLE `saran_komentar` (
 INSERT INTO `saran_komentar` (`id`, `Username`, `Subject`, `Message`, `IsRead`, `ReadBy`, `CreateDate`) VALUES
 (1, 'user', 'TES SUBJECT 6', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, laudantium? Dolor tempora numquam sint, aperiam itaque deserunt ratione totam saepe ab aliquid dolore perferendis blanditiis error veniam vero cupiditate eveniet voluptate sit, distinctio, illum laudantium magnam et similique. Voluptate sunt ipsam esse doloribus harum, in quos voluptas cum, eaque numquam corporis odio sequi optio asperiores, error aliquam autem fugit eum. Blanditiis vel corporis repellendus ab officia minima hic quisquam delectus! Excepturi culpa veniam veritatis consequatur quo. Error beatae tempora perspiciatis et quisquam, corporis, cupiditate recusandae corrupti deserunt sunt quos libero quis sint qui nemo! Eveniet doloremque, deserunt maiores rem magnam sapiente ex iste nihil quibusdam officiis, quas, repudiandae similique nisi labore. Molestias ullam voluptatem voluptas vero illo? Rem, doloribus debitis. Adipisci aperiam quod ipsa sit, maxime obcaecati autem quam distinctio nulla placeat exercitationem sapiente nostrum enim delectus aut assumenda eveniet dolor qui sed laborum sunt vel saepe rem impedit. Asperiores ratione corrupti quis, natus ad repellendus eaque dignissimos tenetur est eius sequi officiis magni quam! Veniam sunt saepe autem soluta facilis eius corrupti doloremque voluptatibus itaque, necessitatibus nam ex temporibus, quod quam harum accusantium totam nisi at? Sequi amet provident reiciendis incidunt, debitis itaque! Vitae mollitia vel eum quod molestias!', 1, 'admin', '2022-03-19 17:28:28'),
 (2, 'user', 'TES SUBJECT', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, nostrum in pariatur beatae modi repellendus suscipit dolorum explicabo! Est dignissimos temporibus odit quaerat officia suscipit reprehenderit quae blanditiis hic similique.', 1, 'admin', '2022-03-19 17:43:06'),
-(7, 'kakak', 'INI SUBJECT DARI APAU', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, nostrum in pariatur beatae modi repellendus suscipit dolorum explicabo! Est dignissimos temporibus odit quaerat officia suscipit reprehenderit quae blanditiis hic similique.', 0, '', '2022-03-19 17:52:22');
+(7, 'kakak', 'INI SUBJECT DARI APAU', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, nostrum in pariatur beatae modi repellendus suscipit dolorum explicabo! Est dignissimos temporibus odit quaerat officia suscipit reprehenderit quae blanditiis hic similique.', 1, 'admin', '2022-03-19 17:52:22');
 
 -- --------------------------------------------------------
 
@@ -336,6 +403,18 @@ ALTER TABLE `jabatan`
   ADD PRIMARY KEY (`id_jabatan`);
 
 --
+-- Indexes for table `jadwal_ibadah`
+--
+ALTER TABLE `jadwal_ibadah`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `jenis_jadwalibadah`
+--
+ALTER TABLE `jenis_jadwalibadah`
+  ADD PRIMARY KEY (`id_jenis`);
+
+--
 -- Indexes for table `kontak_pengurus`
 --
 ALTER TABLE `kontak_pengurus`
@@ -351,6 +430,12 @@ ALTER TABLE `organisasi`
 -- Indexes for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `profile_gereja`
+--
+ALTER TABLE `profile_gereja`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -412,22 +497,40 @@ ALTER TABLE `jabatan`
   MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `jadwal_ibadah`
+--
+ALTER TABLE `jadwal_ibadah`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `jenis_jadwalibadah`
+--
+ALTER TABLE `jenis_jadwalibadah`
+  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `kontak_pengurus`
 --
 ALTER TABLE `kontak_pengurus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `organisasi`
 --
 ALTER TABLE `organisasi`
-  MODIFY `id_organisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_organisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `profile_gereja`
+--
+ALTER TABLE `profile_gereja`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `renungan_harian`
@@ -457,7 +560,7 @@ ALTER TABLE `struktur_organisasi`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `warta_jemaat`

@@ -1,6 +1,6 @@
 <form method="post" id="form" action="<?=base_url('admin/ManageUsers/saveChange') ;?>">
 	<div class="form-group row">
-		<input type="text" class="form-control" value="<?=$userdetail->IsActive ?>" name="isaktive-temp" id="isaktive-temp">
+		<input type="hidden" class="form-control" value="<?=$userdetail->IsActive ?>" name="isaktive-temp" id="isaktive-temp">
 
 		<div class="col-sm-3 mt-1">
 			<label><strong>NAME</strong></label>

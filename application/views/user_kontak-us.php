@@ -4,9 +4,9 @@
 
 		<ol>
 			<li><a href="<?=base_url('/')?>">Home</a></li>
-			<li>Blog</li>
+			<li>Contact</li>
 		</ol>
-		<h2>Blog</h2>
+		<!-- <h2>Contact Us</h2> -->
 
 	</div>
 </section><!-- End Breadcrumbs -->
@@ -25,8 +25,8 @@
 						<div class="col-md-12">
 							<div class="info-box">
 								<i class="bx bx-map"></i>
-								<h3>Our Address</h3>
-								<p>A108 Adam Street, New York, NY 535022</p>
+								<h3>Alamat Kami</h3>
+								<p>Jl. Desa Harapan, Air Jamban, Kecamatan Mandau, Kabupaten Bengkalis, Riau</p>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -39,8 +39,8 @@
 						<div class="col-md-6">
 							<div class="info-box mt-4">
 								<i class="bx bx-phone-call"></i>
-								<h3>Call Us</h3>
-								<p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+								<h3>Telfon</h3>
+								<p>(0765) 597865</p>
 							</div>
 						</div>
 					</div>
