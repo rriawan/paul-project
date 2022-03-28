@@ -93,9 +93,17 @@ class StrukturOrganisasi extends CI_Controller {
 		$data['dataById'] = $this->organisasi_model->getStrukturById($id);
 		$data['listOrganisasi'] = $this->organisasi_model->listOrganisasi();
 		$data['listJabatan'] = $this->organisasi_model->listJabatan();
+		$data['listDewan'] = $this->organisasi_model->listDewan();
+
 		$this->load->view('modal_edit-struktur', $data);
 	}
 
+	public function getIfDewan()
+	{
+		// $dewan_id = $this->input->post('id',TRUE);
+		$data = $this->organisasi_model->getIfDewan();
+		echo json_encode($data);
+	}
 	public function showModalAddDewan()
 	{
 		// $id = $this->input->post('id_seksidewan');
@@ -136,9 +144,9 @@ class StrukturOrganisasi extends CI_Controller {
 		$this->load->library('upload',$config);
 		if($this->upload->do_upload("img_file")){
 			$data = array('upload_data' => $this->upload->data());
-			$is_dewan = $this->input->post('dewanList');
+			$is_dewan = $this->input->post('organisasiList');
 			$valdewan = "";
-			if($is_dewan == "0" || $is_dewan == "" || $is_dewan == NULL){
+			if($is_dewan != 3){
 				$valdewan = NULL;
 			} else {
 				$valdewan = $this->input->post('dewanList');
@@ -179,11 +187,18 @@ class StrukturOrganisasi extends CI_Controller {
 			}
 		}
 		if($allow_update){
+			$is_dewan = $this->input->post('organisasiList');
+			$valdewan = "";
+			if($is_dewan != 3){
+				$valdewan = NULL;
+			} else {
+				$valdewan = $this->input->post('dewanList');
+			}
 			$data = [
 					'Nama' => $this->input->post('nama'),
 					'is_seksi' => 0,
 					'id_organisasi' => $this->input->post('organisasiList'),
-					'id_dewan' => NULL,
+					'id_dewan' => $valdewan,
 					'id_seksi' => NULL,
 					'id_jabatan' => $this->input->post('jabatanList'),
 					'no_telp' => $this->input->post('no_telp'),

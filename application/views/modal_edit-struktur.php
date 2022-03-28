@@ -29,6 +29,27 @@
 						</select>
 					</div>
 				</div>
+				<input type="hidden" value="<?=$dataById->id_dewan?>" id="iddewan-temp" name="iddewan-temp">
+				
+				<div class="form-group row" id="isDewan">
+					<label class="col-sm-3 col-form-label">DEWAN</label>
+					<div class="col-sm-9">
+						<select name="dewanList" id="dewanList" class="form-control mt-2 text-dark dewanList">
+							<?php
+							foreach($listDewan as $row_dewan){
+								if($row_dewan->id_dewan == $dataById->id_dewan){
+									$select_dewan = "selected";
+								}else{
+									$select_dewan = "";
+								}
+								echo "<option $select_dewan value=".$row_dewan->id_dewan.">".$row_dewan->nama_dewan."</option>";
+							}
+							?>
+						</select>
+					</div>
+				</div>
+				
+
 				<div class="form-group row">
 					<label class="col-sm-3 col-form-label">JABATAN</label>
 					<div class="col-sm-9">
@@ -49,7 +70,8 @@
 				<div class="form-group row">
 					<label class="col-sm-3 col-form-label">NO TELP</label>
 					<div class="col-sm-9">
-						<input value="<?=$dataById->no_telp?>" type="text" id="no_telp" name="no_telp" class="form-control" placeholder="Nomor Telefon">
+						<input value="<?=$dataById->no_telp?>" type="text" id="no_telp" name="no_telp" class="form-control"
+							placeholder="Nomor Telefon">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -59,9 +81,6 @@
 					<div class="col-9">
 						<input type="file" id="img_file" name="img_file">
 						<p class="help-block">Max. 2MB</p>
-						<!-- <div class="row">
-							<img style="width:70px; height:85px;" src="<?=base_url()?>temp-folder/<?=$dataById->img_url?>" alt="">
-						</div> -->
 					</div>
 				</div>
 				<div class="form-group row">
@@ -77,14 +96,46 @@
 </div>
 
 <script>
-	// $("#jabatanList").change(function () {
-	// 	var jabId = $(this).val();
-	// 	$('#jab-temp').val(jabId);
-	// });
-	// $("#organisasiList").change(function () {
-	// 	var orgId = $(this).val();
-	// 	$('#org-temp').val(orgId);
-	// });
+	$(document).ready(function () {
+		if ($('#iddewan-temp').val() != "") {
+    $("#isDewan").show();
+		}else{
+    	$("#isDewan").hide();
+			
+		}
+
+		$('#organisasiList').change(function () {
+			// var iddewan = $('#iddewan-temp').val($('#'));
+
+			var id = $(this).val();
+			if(id == 3){
+    		$("#isDewan").show();
+			}else{
+    		$("#isDewan").hide();
+			}
+			$.ajax({
+				url: "<?php echo base_url('admin/StrukturOrganisasi/getIfDewan');?>",
+				method: "GET",
+				// data: {
+				// 	id: id
+				// },
+				async: true,
+				dataType: 'json',
+				success: function (data) {
+
+					var html = '';
+					var i;
+					for (i = 0; i < data.length; i++) {
+						html += '<option value=' + data[i].id_dewan + '>' + data[i].nama_dewan +
+							'</option>';
+					}
+					$('#dewanList').html(html);
+
+				}
+			});
+			return false;
+		});
+	});
 	$('#submit').submit(function (e) {
 		e.preventDefault();
 
@@ -103,7 +154,7 @@
 			alert("No Telp Harus Diisi!")
 		} else {
 			$.ajax({
-				url: '<?php echo base_url('admin/StrukturOrganisasi/updateStruktur') ?>',
+				url: "<?php echo base_url('admin/StrukturOrganisasi/updateStruktur') ?>",
 				type: "post",
 				data: new FormData(this),
 				processData: false,

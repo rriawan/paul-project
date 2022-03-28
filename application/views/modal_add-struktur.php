@@ -129,7 +129,7 @@
 				cache: false,
 				async: false,
 				success: function (data) {
-					alert(data);
+					window.location.reload();
 				}
 			});
 		}
