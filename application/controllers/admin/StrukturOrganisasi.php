@@ -123,7 +123,6 @@ class StrukturOrganisasi extends CI_Controller {
 		$this->load->view('modal_edit-dewan', $data);
 	}
 
-	
 	public function getSub()
 	{
 		$dewan_id = $this->input->post('id',TRUE);
@@ -137,11 +136,18 @@ class StrukturOrganisasi extends CI_Controller {
 		$this->load->library('upload',$config);
 		if($this->upload->do_upload("img_file")){
 			$data = array('upload_data' => $this->upload->data());
+			$is_dewan = $this->input->post('dewanList');
+			$valdewan = "";
+			if($is_dewan == "0" || $is_dewan == "" || $is_dewan == NULL){
+				$valdewan = NULL;
+			} else {
+				$valdewan = $this->input->post('dewanList');
+			}
 			$data1 = array(
 			'Nama' => $this->input->post('nama'),
 			'is_seksi' => 0,
 			'id_organisasi' => $this->input->post('organisasiList'),
-			'id_dewan' => NULL,
+			'id_dewan' => $valdewan,
 			'id_seksi' => NULL,
 			'id_jabatan' => $this->input->post('jabatanList'),
 			'no_telp' => $this->input->post('no_telp'),

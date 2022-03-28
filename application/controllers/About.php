@@ -15,6 +15,7 @@ class About extends CI_Controller {
 			'title' => 'Tentang Gereja',
 			'content' => 'user_about',	
       'active_uri' => 'about',
+			'active_sub' => '',
       'profileGereja' => $this->userpage_model->getProfileGereja()->result()
 		);
 		$this->load->view('user-layout/wrappers.php', $data, FALSE);

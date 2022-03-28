@@ -15,6 +15,7 @@ class ContactUs extends CI_Controller {
 			'title' => 'Hubungi Kami',
 			'content' => 'user_kontak-us',	
       'active_uri' => 'kontakkami',
+      'active_sub' => '',
       'userinfo' => $this->userInfo()
 		);
 		$this->load->view('user-layout/wrappers.php', $data, FALSE);

@@ -14,6 +14,7 @@ class Home extends CI_Controller {
 			'title' => 'Beranda',
 			'content' => 'user_home',			
 			'active_uri' => 'home',
+			'active_sub' => '',
 			'wartaterkini' => $this->userpage_model->detailWartaTerkini(1),
 			'renunganHarian' => $this->userpage_model->getRenunganUser()
 		);

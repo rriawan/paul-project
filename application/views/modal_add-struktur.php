@@ -24,6 +24,9 @@
 						</select>
 					</div>
 				</div>
+				<div id="isdewan">				
+
+				</div>
 				<div class="form-group row">
 					<label class="col-sm-3 col-form-label">JABATAN</label>
 					<div class="col-sm-9">
@@ -63,6 +66,33 @@
 </div>
 
 <script>
+	$(document).ready(function () {
+
+		$('#organisasiList').change(function () {
+			var idOrg = $(this).val();
+			if(idOrg == 3){
+				var html = '';
+				html += '<div class="form-group row">'			
+				html += '<label class="col-sm-3 col-form-label">DEWAN</label>'
+				html +=	'<div class="col-sm-9">'
+				html += '<select name="dewanList" id="dewanList" class="form-control mt-2 text-dark dewanList">'
+				html += '<option value="0">- Pilih Dewan -</option>'
+				html += '<option value="1">Koinonia</option>'
+				html += '<option value="2">Marturia</option>'
+				html += '<option value="3">Diakonia</option>'								
+				html += '</select>'
+				html += '</div>'
+				html +=	'</div>';
+				$('#isdewan').html(html)
+				
+
+			}else {
+				var html = '';			
+				$('#isdewan').html(html)
+
+			}
+		});
+	});
 	// $("#jabatanList").change(function () {
 	// 	var jabId = $(this).val();
 	// 	$('#jab-temp').val(jabId);
@@ -85,13 +115,13 @@
 			alert("Organisasi Harus Dipilih!");
 		} else if (jab_id == "0" || jab_id == "") {
 			alert("Jabatan harus dipilih!");
-		} else if(no_telp == ""){
+		} else if (no_telp == "") {
 			alert("No Telp Harus Diisi!")
-		} else if(img == ""){
+		} else if (img == "") {
 			alert("Foto Harus Dipilih!");
 		} else {
 			$.ajax({
-				url: '<?php echo base_url('admin/StrukturOrganisasi/insertStruktur') ?>',
+				url: "<?php echo base_url('admin/StrukturOrganisasi/insertStruktur') ?>",
 				type: "post",
 				data: new FormData(this),
 				processData: false,
