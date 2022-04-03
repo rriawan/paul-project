@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
 class userpage_model extends CI_Model 
 {
 
@@ -62,27 +64,60 @@ class userpage_model extends CI_Model
   //   return $this->db->query($sql);
   // }
 
-  function getKoinonia($is_seksi)
+  function getDataKoinonia($is_seksi)
   {
     $sql = "SELECT a.*, b.nama_organisasi, c.nama_jabatan, d.nama_dewan, E.nama_seksi FROM struktur_organisasi a
             JOIN organisasi b on a.id_organisasi = b.id_organisasi
             JOIN jabatan c on a.id_jabatan = c.id_jabatan
             JOIN dewan d on a.id_dewan = d.id_dewan
-            JOIN seksi e on a.id_seksi = e.id_seksi
+            LEFT JOIN seksi e on a.id_seksi = e.id_seksi
             WHERE a.is_seksi = $is_seksi
             AND a.id_organisasi = 3
             AND a.id_dewan = 1";
     return $this->db->query($sql);
 
   }
+  function countKoinonia()
+  {
+    $sql = "SELECT * FROM seksi
+            WHERE id_dewan = 1";
+    return $this->db->query($sql);
+  }
 
-  function getMarturia($is_seksi)
+  function getDetailSeksi($idseksi)
+  {
+    $sql = "SELECT * FROM seksi
+            WHERE id_seksi = $idseksi";
+    return $this->db->query($sql);
+  }
+  function getSeksiKoinonia($idseksi)
+  {
+    $sql = "SELECT a.*, c.nama_jabatan, E.nama_seksi FROM struktur_organisasi a
+            JOIN jabatan c on a.id_jabatan = c.id_jabatan
+            LEFT JOIN seksi e on a.id_seksi = e.id_seksi
+            WHERE a.is_seksi = 1
+            AND a.id_organisasi = 3
+            AND a.id_dewan = 1
+            AND a.id_seksi = $idseksi
+            ORDER BY a.id_jabatan";
+    return $this->db->query($sql);
+  }
+  function getGroupSeksiKoinonia()
+  {
+    $sql = "SELECT a.id_seksi, b.nama_seksi FROM struktur_organisasi a
+            JOIN seksi b ON a.id_seksi = b.id_seksi
+            WHERE a.is_seksi = 1
+            group by a.id_seksi";
+    return $this->db->query($sql)->result();
+  }
+
+  function getDataMarturia($is_seksi)
   {
     $sql = "SELECT a.*, b.nama_organisasi, c.nama_jabatan, d.nama_dewan, E.nama_seksi FROM struktur_organisasi a
             JOIN organisasi b on a.id_organisasi = b.id_organisasi
             JOIN jabatan c on a.id_jabatan = c.id_jabatan
             JOIN dewan d on a.id_dewan = d.id_dewan
-            JOIN seksi e on a.id_seksi = e.id_seksi
+            LEFT JOIN seksi e on a.id_seksi = e.id_seksi
             WHERE a.is_seksi = $is_seksi
             AND a.id_organisasi = 3
             AND a.id_dewan = 2";
@@ -90,14 +125,14 @@ class userpage_model extends CI_Model
 
   }
 
-  function getDiakonia()
+  function getDataDiakonia($is_seksi)
   {
     $sql = "SELECT a.*, b.nama_organisasi, c.nama_jabatan, d.nama_dewan, E.nama_seksi FROM struktur_organisasi a
             JOIN organisasi b on a.id_organisasi = b.id_organisasi
             JOIN jabatan c on a.id_jabatan = c.id_jabatan
             JOIN dewan d on a.id_dewan = d.id_dewan
-            JOIN seksi e on a.id_seksi = e.id_seksi
-            WHERE a.is_seksi = 1
+            LEFT JOIN seksi e on a.id_seksi = e.id_seksi
+            WHERE a.is_seksi = $is_seksi
             AND a.id_organisasi = 3
             AND a.id_dewan = 3";
     return $this->db->query($sql);
