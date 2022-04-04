@@ -77,39 +77,33 @@ class userpage_model extends CI_Model
     return $this->db->query($sql);
 
   }
-  function countKoinonia()
-  {
-    $sql = "SELECT * FROM seksi
-            WHERE id_dewan = 1";
-    return $this->db->query($sql);
-  }
 
-  function getDetailSeksi($idseksi)
-  {
-    $sql = "SELECT * FROM seksi
-            WHERE id_seksi = $idseksi";
-    return $this->db->query($sql);
-  }
-  function getSeksiKoinonia($idseksi)
-  {
-    $sql = "SELECT a.*, c.nama_jabatan, E.nama_seksi FROM struktur_organisasi a
-            JOIN jabatan c on a.id_jabatan = c.id_jabatan
-            LEFT JOIN seksi e on a.id_seksi = e.id_seksi
-            WHERE a.is_seksi = 1
-            AND a.id_organisasi = 3
-            AND a.id_dewan = 1
-            AND a.id_seksi = $idseksi
-            ORDER BY a.id_jabatan";
-    return $this->db->query($sql);
-  }
-  function getGroupSeksiKoinonia()
-  {
-    $sql = "SELECT a.id_seksi, b.nama_seksi FROM struktur_organisasi a
-            JOIN seksi b ON a.id_seksi = b.id_seksi
-            WHERE a.is_seksi = 1
-            group by a.id_seksi";
-    return $this->db->query($sql)->result();
-  }
+  // function getDetailSeksi($idseksi)
+  // {
+  //   $sql = "SELECT * FROM seksi
+  //           WHERE id_seksi = $idseksi";
+  //   return $this->db->query($sql);
+  // }
+  // function getSeksiKoinonia($idseksi)
+  // {
+  //   $sql = "SELECT a.*, c.nama_jabatan, E.nama_seksi FROM struktur_organisasi a
+  //           JOIN jabatan c on a.id_jabatan = c.id_jabatan
+  //           LEFT JOIN seksi e on a.id_seksi = e.id_seksi
+  //           WHERE a.is_seksi = 1
+  //           AND a.id_organisasi = 3
+  //           AND a.id_dewan = 1
+  //           AND a.id_seksi = $idseksi
+  //           ORDER BY a.id_jabatan";
+  //   return $this->db->query($sql);
+  // }
+  // function getGroupSeksiKoinonia()
+  // {
+  //   $sql = "SELECT a.id_seksi, b.nama_seksi FROM struktur_organisasi a
+  //           JOIN seksi b ON a.id_seksi = b.id_seksi
+  //           WHERE a.is_seksi = 1
+  //           group by a.id_seksi";
+  //   return $this->db->query($sql)->result();
+  // }
 
   function getDataMarturia($is_seksi)
   {
