@@ -37,25 +37,18 @@
 		</div>
 	</section>
 <?php
-$grouped_types = array();
-
-foreach($dataSeksi as $type){
-    // add any number of fields here
-    $grouped_types[$type['id_seksi']][] = array('Nama'=>$type['Nama'],'nama_jabatan'=>$type['nama_jabatan']);  
-
-}
-
-ksort($grouped_types);
-print_r($grouped_types);
-foreach($grouped_types as $key=>$value){
-    echo "Another ".$key."\n";
-    foreach($value as $k=>$v){
-       foreach($v as $g=>$r){
-           echo $g." : ".$r.",";
-       }
-        echo "\n";
-    }
-    echo "\n";
+$data = array();
+foreach ($dataSeksi as $row) {
+	$data[$row['nama_seksi']][] = $row; 
+}  
+ foreach($data as $key => $rows) {
+		echo $key;
+		echo '<br>';
+		foreach($rows as $row) {
+			echo '<pre>';
+			echo $row['Nama'];
+			echo '</pre>';
+		}
 }
 ?>
 <!-- <?php

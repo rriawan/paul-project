@@ -70,6 +70,7 @@ class Organisasi extends CI_Controller {
 				// 'dataSeksi' => $grouped_types, 
 				// 'seksi1' => $this->userpage_model->getSeksiKoinonia(1)->result(),
 				'dataSeksi' => $this->userpage_model->getDataKoinonia(1)->result_array(),
+				'dataGroup' => $this->userpage_model->countKoinonia()->row_array(),
 				'dataHead' => 'Dewan Koinonia',
 				// 'dataHeadSeksi' => $this->userpage_model->getDetailSeksi($value->id_seksi)->row()
 
