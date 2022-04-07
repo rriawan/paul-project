@@ -10,7 +10,7 @@ class wartaTerkini_model extends CI_Model
 
   function listWartaTerkini()
   {
-    $sql = "SELECT * FROM warta_terkini";
+    $sql = "SELECT * FROM warta_terkini ORDER BY id DESC";
     return $this->db->query($sql)->result();
   }
 
@@ -20,6 +20,17 @@ class wartaTerkini_model extends CI_Model
     return $this->db->query($sql)->row();
   }
 
+  function insertWartaTerkini($data)
+  {
+    $sql = "INSERT INTO warta_terkini (PesanWartaTerkini, UpdateBy, UpdateDate)
+            VALUES (?, ?, ?)";
+    $exec = $this->db->query($sql, $data);
+    if($exec){
+      return TRUE;
+    }else {
+      return FALSE;
+    }
+  }
   function updateWartaTerkini($data, $id)
   {
     $sql = "UPDATE warta_terkini SET PesanWartaTerkini = ?, UpdateBy = ?, UpdateDate = ?

@@ -15,7 +15,7 @@ class Home extends CI_Controller {
 			'content' => 'user_home',			
 			'active_uri' => 'home',
 			'active_sub' => '',
-			'wartaterkini' => $this->userpage_model->detailWartaTerkini(1),
+			'wartaterkini' => $this->userpage_model->detailWartaTerkini(),
 			'renunganHarian' => $this->userpage_model->getRenunganUser()
 		);
 		$this->load->view('user-layout/wrappers.php', $data, FALSE);

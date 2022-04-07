@@ -48,6 +48,30 @@ class WartaTerkini extends CI_Controller {
 		echo json_encode($output);
   }
 
+	public function showModalAdd()
+	{
+		$this->load->view('modal_add-wartaterkini');	
+	}
+
+	public function insertWartaTerkini()
+	{
+		$dateNow = new DateTime("now", new DateTimeZone('Asia/Bangkok'));
+		$dateNow = $dateNow->format('Y-m-d H:i:s');
+		$data = array(
+			'PesanWartaTerkini' => $this->input->post('message'),
+			'UpdateBy' => $this->input->post('updateby'),
+			'UpdateDate' => $dateNow
+		);
+		$process = $this->wartaTerkini_model->insertWartaTerkini($data);
+
+		if($process == TRUE){
+			redirect('admin/WartaTerkini');
+		}else{
+			echo "Gagal";
+		}
+
+	}
+
   public function ModalWartaTerkini()
   {
     $id = $this->input->post('ItemID');

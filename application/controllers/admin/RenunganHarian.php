@@ -48,6 +48,30 @@ class RenunganHarian extends CI_Controller {
 		echo json_encode($output);
   }
 
+	public function showModalAdd()
+	{
+		$this->load->view('modal_add-renunganharian');	
+	}
+
+	public function insertNewRenungan()
+	{
+		$dateNow = new DateTime("now", new DateTimeZone('Asia/Bangkok'));
+		$dateNow = $dateNow->format('Y-m-d H:i:s');
+		$data = array(
+			'Renungan' => $this->input->post('renungan'),
+			'UpdateBy' => $this->input->post('updateby'),
+			'UpdateDate' => $dateNow
+		);
+		$process = $this->renunganHarian_model->insertRenunganHarian($data);
+
+		if($process == TRUE){
+			redirect('admin/RenunganHarian');
+		}else{
+			echo "Gagal";
+		}
+
+	}
+
   public function showModalRenungan()
   {
     $id = $this->input->post('ItemID');

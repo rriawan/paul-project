@@ -10,7 +10,7 @@ class renunganHarian_model extends CI_Model
 
   function getRenunganHarian()
   {
-    $sql = "SELECT * FROM renungan_harian";
+    $sql = "SELECT * FROM renungan_harian ORDER BY id desc";
     return $this->db->query($sql)->result();
   }
 
@@ -26,6 +26,17 @@ class renunganHarian_model extends CI_Model
     return $this->db->query($sql)->row();
   }
 
+  function insertRenunganHarian($data)
+  {
+    $sql = "INSERT INTO renungan_harian (Renungan, UpdateBy, UpdateDate)
+            VALUES (?, ?, ?)";
+    $exec = $this->db->query($sql, $data);
+    if($exec){
+      return TRUE;
+    }else {
+      return FALSE;
+    }
+  }
   function updateRenunganHarian($data, $id)
   {
     $sql = "UPDATE renungan_harian SET Renungan = ?, UpdateBy = ?, UpdateDate = ?

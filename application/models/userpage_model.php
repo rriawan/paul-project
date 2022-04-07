@@ -10,9 +10,9 @@ class userpage_model extends CI_Model
 		parent::__construct();
 	}
 
-  function detailWartaTerkini($id)
+  function detailWartaTerkini()
   {
-    $sql = "SELECT * FROM warta_terkini where id = $id";
+    $sql = "SELECT * FROM warta_terkini ORDER BY id DESC LIMIT 1";
     return $this->db->query($sql)->row();
   }
   
@@ -24,7 +24,7 @@ class userpage_model extends CI_Model
 
   function getRenunganUser()
   {
-    $sql = "SELECT A.*, B.Name FROM renungan_harian A JOIN user B ON A.UpdateBy = B.Username LIMIT 1";
+    $sql = "SELECT A.*, B.Name FROM renungan_harian A JOIN user B ON A.UpdateBy = B.Username ORDER BY id DESC LIMIT 1";
     return $this->db->query($sql)->row();
   }
 

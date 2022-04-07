@@ -4,6 +4,7 @@
 			<div class="card card-primary card-outline">
 				<div class="card-header">
 					<h3 class="card-title">Warta Terkini</h3>
+					<button class="btn btn-info float-right" type="button" id="btn-addNew">Add Data</button>
 				</div>
 				<div class="card-body p-1">
 					<div class="table-responsive mailbox-messages">
@@ -85,6 +86,26 @@
 					document.getElementById("modalTitle").innerHTML = 'Detail Warta Terkini';
 				}
 			});
+		});
+	});
+	$('#btn-addNew').click(function () {
+		var aksi = 'Add Warta Terkini';
+		$.ajax({
+			url: "<?=base_url('admin/WartaTerkini/showModalAdd');?>",
+			method: 'post',
+			data: {
+				aksi: aksi
+			},
+
+			success: function (data) {
+				$("#modalId").modal({
+					backdrop: 'static',
+					keyboard: false,
+				});
+				$("#modalId").modal("show");
+				$("#modalIsi").html(data);
+				document.getElementById("modalTitle").innerHTML = aksi;
+			}
 		});
 	});
 </script>

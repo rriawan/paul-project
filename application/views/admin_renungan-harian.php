@@ -4,6 +4,7 @@
 			<div class="card card-primary card-outline">
 				<div class="card-header">
 					<h3 class="card-title">Renungan Harian</h3>
+					<button class="btn btn-info float-right" type="button" id="btn-addNew">Add Data</button>
 				</div>
 				<div class="card-body p-1">
 					<div class="table-responsive mailbox-messages">
@@ -85,6 +86,26 @@
 					document.getElementById("modalTitle").innerHTML = 'Detail Renungan Harian';
 				}
 			});
+		});
+	});
+	$('#btn-addNew').click(function () {
+		var aksi = 'Add Renungan Harian';
+		$.ajax({
+			url: "<?=base_url('admin/RenunganHarian/showModalAdd');?>",
+			method: 'post',
+			data: {
+				aksi: aksi
+			},
+
+			success: function (data) {
+				$("#modalId").modal({
+					backdrop: 'static',
+					keyboard: false,
+				});
+				$("#modalId").modal("show");
+				$("#modalIsi").html(data);
+				document.getElementById("modalTitle").innerHTML = aksi;
+			}
 		});
 	});
 </script>
