@@ -34,6 +34,14 @@ class userpage_model extends CI_Model
     return $this->db->query($sql);
   }
 
+  function getJadwalIbadah()
+  {
+    $sql = "SELECT A.*, B.keterangan_jenis FROM jadwal_ibadah A
+            JOIN jenis_jadwalibadah B ON a.id_jenis = b.id_jenis
+            ORDER BY A.id";
+    return $this->db->query($sql);
+  }
+
   function getDataPendeta()
   {
     $sql = "SELECT A.*, B.*, C.* FROM struktur_organisasi A

@@ -36,8 +36,13 @@
 						</li>
 					</ul>
 				</li>
-				<li><a href="<?=base_url('WartaJemaat')?>"
-						class="<?php if($active_uri == "wartajemaat"){echo 'active';}?>">Warta Jemaat</a></li>
+				<li class="dropdown"><a href="#" class="<?php if($active_uri == "infogereja"){echo 'active';}?>">
+					<span>Info Gereja</span> <i class="bi bi-chevron-down"></i></a>
+					<ul>
+						<li><a href="<?= base_url('WartaJemaat')?>" class="<?php if($active_sub == "wartajemaat"){echo 'active';}?>">Warta Jemaat</a></li>
+						<li><a href="<?= base_url('JadwalIbadah')?>" class="<?php if($active_sub == "jadwalibadah"){echo 'active';}?>">Jadwal Ibadah</a></li>
+					</ul>
+				</li>
 				<li><a href="<?=base_url('ContactUs')?>" class="<?php if($active_uri == "kontakkami"){echo 'active';}?>">Contact
 						Us</a></li>
 				<?php 

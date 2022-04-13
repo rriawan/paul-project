@@ -14,8 +14,8 @@ class WartaJemaat extends CI_Controller {
 		$data = array(
 			'title' => 'Warta Jemaat',
 			'content' => 'user_wartajemaat',	
-      'active_uri' => 'wartajemaat',
-			'active_sub' => '',
+      'active_uri' => 'infogereja',
+			'active_sub' => 'wartajemaat',
 		);
 		$this->load->view('user-layout/wrappers.php', $data, FALSE);
 	}
